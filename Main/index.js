@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // Array of questions for user input
-const questions = [
+inquirer.prompt ([
   {
     type: 'input',
     name: 'github',
@@ -54,19 +54,44 @@ const questions = [
     name: 'contributing',
     message: 'What does the user need to know about contributing to the repo?',
   },
-];
+]).then((response) => {
+  const generateMarkdown =`
+  # ${response.title} 
+  github: ${response.github} \n more after break
+  `
+  writeFile(generateMarkdown);
+});
 
-// Function to write README file using the user input
-function writeToFile(fileName, data) {
-  return fs.writeFileSync(path.join(process.cwd(), fileName), data);
-}
+function writeFile(generateMarkdown) {
+  fs.writeFileSync('readme.md', generateMarkdown)
+};
 
-// Function to initialize app
-function init() {
-  inquirer.prompt(questions).then((inquirerResponses) => {
-    console.log('Generating README...');
-    writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
-  });
-}
 
-init();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Function to write README file using the user input
+// function writeToFile(fileName, data) {
+//   return fs.writeFileSync(path.join(process.cwd(), fileName), data);
+// }
+
+// // Function to initialize app
+// function init() {
+//   inquirer.prompt(questions).then((inquirerResponses) => {
+//     console.log('Generating README...');
+//     writeToFile('README.md', generateMarkdown({ ...inquirerResponses }));
+//   });
+// }
+
+// init();
