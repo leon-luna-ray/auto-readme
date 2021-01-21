@@ -73,15 +73,21 @@ inquirer.prompt ([
     choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
   },
 ]).then((response) => {
-  const generateMarkdown =`
+  const markdownTemplate =`
 
   # ${response.title}
 
-  - [Deployed Project](${response.appUrl}) \n
-  - [Project Repository](${response.repoUrl})
-
   ### Description
   ${response.description}
+
+  ### Table of Contents
+  * [Image](#image)
+  * [Technologies](#technologies)
+  * [Known Bugs](#known-bugs)
+  * [Next Steps](#next-steps)
+  * [Contact](#contact)
+  * [License] (#license)
+  * [Links] (#links)
 
   ### Image
   ![Screenshot](${response.imagePath})
@@ -89,26 +95,31 @@ inquirer.prompt ([
   ### Technologies
   ${response.technologies}
 
-  ### Known Bugs
+  ### Known-Bugs
   ${response.bugs}
 
-  ### Next Steps
+  ### Next-Steps
   ${response.nextSteps}
 
-  ### Questions
-  Author: ${response.author}
+  ### Contact
+  Author: Ray Luna
   If you have any questions about the repo, open an issue or contact me directly at:
-  - E-Mail: ${response.authorEmail}
-  - GitHub: [${response.authorGithub}](${response.authorGithubUrl})
+  - E-Mail: leon.luna.ray@gmail.com
+  - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
 
   ### License
-  This project is licensed under the (${response.license})[${renderLicenseLink(response.license)}] license.
+  This project is licensed under the (${response.license})[${generateMarkdown.renderLicenseLink(response.license)}] license.
   
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](${renderLicenseBadge(response.license)})
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](${generateMarkdown.renderLicenseBadge(response.license)})
+
+  ### Links
+  - [Deployed Project](${response.appUrl}) \n
+  - [Project Repository](${response.repoUrl})
+
   ` // generateMarkdown
 
   // Invoke the write file function to genereate the new file.
-  writeFile(generateMarkdown);
+  writeFile(markdownTemplate);
 });
 
 // Render markdown to a new file and save.
