@@ -76,14 +76,14 @@ inquirer.prompt ([
   const generateMarkdown =`
 
   # ${response.title}
-  
-  [Deployed Project](${response.appUrl}) \n
-  [Project Repository](${response.repoUrl})
 
-  ### Project Description
+  - [Deployed Project](${response.appUrl}) \n
+  - [Project Repository](${response.repoUrl})
+
+  ### Description
   ${response.description}
 
-  ### Project Image
+  ### Image
   ![Screenshot](${response.imagePath})
 
   ### Technologies
@@ -95,14 +95,15 @@ inquirer.prompt ([
   ### Next Steps
   ${response.nextSteps}
 
-  ### Author
-  #### ${response.author}
-  GitHub: [${response.authorGithub}](${response.authorGithubUrl})
-  E-Mail: ${response.authorEmail}
-
+  ### Questions
+  Author: ${response.author}
+  If you have any questions about the repo, open an issue or contact me directly at:
+  - E-Mail: ${response.authorEmail}
+  - GitHub: [${response.authorGithub}](${response.authorGithubUrl})
 
   ### License
   ${response.license}
+  
   ` // generateMarkdown
   writeFile(generateMarkdown);
 });
