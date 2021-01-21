@@ -2,11 +2,13 @@
 
   # ReadMe Generator
 
-  ### Description
+  ## Description
 
   A command line application to seamlessly create a new ReadMe file for your projects quickly!
 
-  ### Table of Contents
+  ---
+
+  ## Table of Contents
 
   * [Image](#image)
   * [Technologies](#technologies)
@@ -16,31 +18,43 @@
   * [Contact](#contact)
   * [Links](#Links)
 
-  ### Image
+  ---
+
+  ## Image
 
   ![Screenshot](https://github.com/leon-luna-ray/hw09-readme-generator/blob/main/assets/images/app-screenshot.png)
 
-  ### Technologies
+  ---
+
+  ## Technologies
 
   - Javascript
   - Node.js
   - inquirer npm
 
-  ### Known-Bugs
+  ---
+
+  ## Known-Bugs
 
   Trouble with getting some links to work in the table of contents and the screenshot when rendered by the app. Can be fixed by entering it manually in the md file.
 
-  ### Next-Steps
+  ---
+
+  ## Next-Steps
 
   Add functionality to add bullet point lists, add links to technologies section and fix bugs listed above.
 
-  ### License
+  ---
+
+  ## License
 
   This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+
+  ---
   
-  ### Contact
+  ## Contact
 
   Author: Ray Luna 
 
@@ -48,7 +62,9 @@
   - E-Mail: leon.luna.ray@gmail.com
   - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
 
-  ### Links
+  ---
+
+  ## Links
 
   - [Project Repository](https://github.com/leon-luna-ray/hw09-readme-generator)
 

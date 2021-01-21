@@ -61,6 +61,8 @@ inquirer.prompt ([
 
   ${response.description}
 
+  ---
+
   ### Table of Contents
 
   * [Image](#image)
@@ -71,26 +73,38 @@ inquirer.prompt ([
   * [Contact](#contact)
   * [Links] (#links)
 
+  ---
+
   ### Image
 
   ![Screenshot](${response.imageUrl})
+
+  ---
 
   ### Technologies
 
   ${response.technologies}
 
+  ---
+
   ### Known-Bugs
 
   ${response.bugs}
+
+  ---
 
   ### Next-Steps
 
   ${response.nextSteps}
 
+  ---
+
   ### License
 
   This project is licensed under the [${response.license}](${generateMarkdown.renderLicenseLink(response.license)}) license.
   ${generateMarkdown.renderLicenseBadge(response.license)}
+
+  ---
 
   ### Contact
 
@@ -98,6 +112,8 @@ inquirer.prompt ([
   If you have any questions about the repo, open an issue or contact me directly at:
   - E-Mail: leon.luna.ray@gmail.com
   - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
+
+  ---
 
   ### Links
 
