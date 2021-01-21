@@ -67,7 +67,7 @@ inquirer.prompt ([
 
   # ${response.title}
   
-  [Deployed Project](${response.appUrl})
+  [Deployed Project](${response.appUrl}) \n
   [Project Repository](${response.repoUrl})
 
   ## Project Description
