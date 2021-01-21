@@ -102,13 +102,16 @@ inquirer.prompt ([
   - GitHub: [${response.authorGithub}](${response.authorGithubUrl})
 
   ### License
-  ${response.license}
+  This project is licensed under the (${response.license})[${renderLicenseLink(response.license)}] license.
   
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](${renderLicenseBadge(response.license)})
   ` // generateMarkdown
+
+  // Invoke the write file function to genereate the new file.
   writeFile(generateMarkdown);
 });
 
-//
+// Render markdown to a new file and save.
 function writeFile(markdown) {
   fs.writeFileSync('readme.md', markdown)
 };
