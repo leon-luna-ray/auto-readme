@@ -32,7 +32,7 @@
 
   ### Next-Steps
 
-  Add functionality to add bullet point lists and fix bugs listed above.
+  Add functionality to add bullet point lists, add links to technologies section and fix bugs listed above.
 
   ### License
 
