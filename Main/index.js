@@ -18,11 +18,6 @@ inquirer.prompt ([
   },
   {
     type: 'input',
-    name: 'imagePath',
-    message: 'Enter the file path to the project screenshot',
-  },
-  {
-    type: 'input',
     name: 'technologies',
     message: 'Which technologies were used?',
   },
@@ -38,6 +33,11 @@ inquirer.prompt ([
   },
   {
     type: 'input',
+    name: 'imageUrl',
+    message: 'What is the project image URL?',
+  },
+  {
+    type: 'input',
     name: 'bugs',
     message: 'A despription of any known bugs',
   },
@@ -45,26 +45,6 @@ inquirer.prompt ([
     type: 'input',
     name: 'nextSteps',
     message: 'Next steps for the project',
-  },
-  {
-    type: 'input',
-    name: 'author',
-    message: 'Who is the project author?',
-  },
-  {
-    type: 'input',
-    name: 'authorGithub',
-    message: 'What is the author\'s github user name?',
-  },
-  {
-    type: 'input',
-    name: 'authorGithubUrl',
-    message: 'What is the author\'s github repo URL?',
-  },
-  {
-    type: 'input',
-    name: 'authorEmail',
-    message: 'What is the author\'s e-mail address?',
   },
   {
     type: 'list',
@@ -83,14 +63,14 @@ inquirer.prompt ([
   ### Table of Contents
   * [Image](#image)
   * [Technologies](#technologies)
-  * [Known Bugs](#known-bugs)
-  * [Next Steps](#next-steps)
-  * [Contact](#contact)
+  * [Known-Bugs](#known-bugs)
+  * [Next-Steps](#next-steps)
   * [License] (#license)
+  * [Contact](#contact)
   * [Links] (#links)
 
   ### Image
-  ![Screenshot](${response.imagePath})
+  ![Screenshot](${response.imageUrl})
 
   ### Technologies
   ${response.technologies}
@@ -101,16 +81,16 @@ inquirer.prompt ([
   ### Next-Steps
   ${response.nextSteps}
 
+  ### License
+  This project is licensed under the [${response.license}](${generateMarkdown.renderLicenseLink(response.license)}) license.
+  
+  ${generateMarkdown.renderLicenseBadge(response.license)}
+
   ### Contact
-  Author: Ray Luna
+  Author: Ray Luna \n
   If you have any questions about the repo, open an issue or contact me directly at:
   - E-Mail: leon.luna.ray@gmail.com
   - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
-
-  ### License
-  This project is licensed under the (${response.license})[${generateMarkdown.renderLicenseLink(response.license)}] license.
-  
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](${generateMarkdown.renderLicenseBadge(response.license)})
 
   ### Links
   - [Deployed Project](${response.appUrl}) \n
@@ -124,7 +104,7 @@ inquirer.prompt ([
 
 // Render markdown to a new file and save.
 function writeFile(markdown) {
-  fs.writeFileSync('readme.md', markdown)
+  fs.writeFileSync('README.md', markdown)
 };
 
 
