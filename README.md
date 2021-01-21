@@ -1,6 +1,4 @@
- # ReadMe Generator  
-
----
+  # ReadMe Generator
 
   ## Description
 
