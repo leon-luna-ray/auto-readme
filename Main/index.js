@@ -55,7 +55,7 @@ inquirer.prompt ([
 ]).then((response) => {
   const markdownTemplate =`
 
-  # ${response.title}
+  # ${response.title} \n
 
   ## Description
 

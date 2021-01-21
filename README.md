@@ -1,6 +1,6 @@
 
 
-  # ReadMe Generator
+  # ReadMe Generator  
 
   ## Description
 
@@ -47,7 +47,7 @@
   If you have any questions about the repo, open an issue or contact me directly at:
   - E-Mail: leon.luna.ray@gmail.com
   - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
-  
+
   ## Links
 
   - [Project Repository](https://github.com/leon-luna-ray/hw09-readme-generator)
