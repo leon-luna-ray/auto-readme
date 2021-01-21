@@ -32,7 +32,7 @@
 
   ### Next-Steps
 
-  Add functionality to add bullet point lists.
+  Add functionality to add bullet point lists and fix bugs listed above.
 
   ### License
 
