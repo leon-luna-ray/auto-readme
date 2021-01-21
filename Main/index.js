@@ -68,6 +68,7 @@ inquirer.prompt ([
   # ${response.title}
   
   [Deployed Project](${response.appUrl})
+  [Project Repository](${response.repoUrl})
 
   ## Project Description
   ${response.description}
@@ -75,10 +76,18 @@ inquirer.prompt ([
   ## Technologies
   ${response.technologies}
 
+  ## Known Bugs
+  ${response.bugs}
 
+  ## Next Steps
+  ${response.nextSteps}
 
+  ## Author
+  ### ${response.author}
+  GitHub: [${response.authorGithub}](${response.authorGithubUrl})
 
-
+  ## License
+  ${response.license}
   ` // generateMarkdown
   writeFile(generateMarkdown);
 });
