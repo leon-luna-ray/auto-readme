@@ -57,6 +57,11 @@ inquirer.prompt ([
     message: 'What is the author\'s github repo URL?',
   },
   {
+    type: 'input',
+    name: 'authorEmail',
+    message: 'What is the author\'s e-mail address?',
+  },
+  {
     type: 'list',
     name: 'license',
     message: 'What kind of license should your project have?',
@@ -70,21 +75,23 @@ inquirer.prompt ([
   [Deployed Project](${response.appUrl}) \n
   [Project Repository](${response.repoUrl})
 
-  ## Project Description
+  ### Project Description
   ${response.description}
 
-  ## Technologies
+  ### Technologies
   ${response.technologies}
 
-  ## Known Bugs
+  ### Known Bugs
   ${response.bugs}
 
-  ## Next Steps
+  ### Next Steps
   ${response.nextSteps}
 
-  ## Author
-  ### ${response.author}
+  ### Author
+  #### ${response.author}
   GitHub: [${response.authorGithub}](${response.authorGithubUrl})
+  E-Mail: ${response.authorEmail}
+
 
   ## License
   ${response.license}
