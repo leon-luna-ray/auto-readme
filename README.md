@@ -18,7 +18,7 @@
 
   ### Image
 
-  ![Screenshot](https://github.com/leon-luna-ray/hw09-readme-generator/blob/main/assets/images/screenshot.png)
+  ![Screenshot](https://github.com/leon-luna-ray/hw09-readme-generator/blob/main/assets/images/app-screenshot.png)
 
   ### Technologies
 
