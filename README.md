@@ -22,7 +22,9 @@
 
   ### Technologies
 
-  Javascript, node.js, inquirer npm
+  - Javascript
+  - Node.js
+  - inquirer npm
 
   ### Known-Bugs
 
