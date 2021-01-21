@@ -64,7 +64,21 @@ inquirer.prompt ([
   },
 ]).then((response) => {
   const generateMarkdown =`
-  # ${response.title} 
+
+  # ${response.title}
+  
+  [Deployed Project](${response.appUrl})
+
+  ## Project Description
+  ${response.description}
+
+  ## Technologies
+  ${response.technologies}
+
+
+
+
+
   ` // generateMarkdown
   writeFile(generateMarkdown);
 });
