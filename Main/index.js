@@ -57,13 +57,11 @@ inquirer.prompt ([
 
   # ${response.title}
 
-  ### Description
+  ## Description
 
   ${response.description}
 
-  ---
-
-  ### Table of Contents
+  ## Table of Contents
 
   * [Image](#image)
   * [Technologies](#technologies)
@@ -73,49 +71,35 @@ inquirer.prompt ([
   * [Contact](#contact)
   * [Links] (#links)
 
-  ---
-
-  ### Image
+  ## Image
 
   ![Screenshot](${response.imageUrl})
 
-  ---
-
-  ### Technologies
+  ## Technologies
 
   ${response.technologies}
 
-  ---
-
-  ### Known-Bugs
+  ## Known-Bugs
 
   ${response.bugs}
 
-  ---
-
-  ### Next-Steps
+  ## Next-Steps
 
   ${response.nextSteps}
 
-  ---
-
-  ### License
+  ## License
 
   This project is licensed under the [${response.license}](${generateMarkdown.renderLicenseLink(response.license)}) license.
   ${generateMarkdown.renderLicenseBadge(response.license)}
 
-  ---
-
-  ### Contact
+  ## Contact
 
   Author: Ray Luna \n
   If you have any questions about the repo, open an issue or contact me directly at:
   - E-Mail: leon.luna.ray@gmail.com
   - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
 
-  ---
-
-  ### Links
+  ## Links
 
   - [Deployed Project](${response.appUrl}) \n
   - [Project Repository](${response.repoUrl})
