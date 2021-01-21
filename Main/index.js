@@ -18,6 +18,11 @@ inquirer.prompt ([
   },
   {
     type: 'input',
+    name: 'imagePath',
+    message: 'Enter the file path to the project screenshot',
+  },
+  {
+    type: 'input',
     name: 'technologies',
     message: 'Which technologies were used?',
   },
@@ -78,6 +83,9 @@ inquirer.prompt ([
   ### Project Description
   ${response.description}
 
+  ### Project Image
+  ![Screenshot](${response.imagePath})
+
   ### Technologies
   ${response.technologies}
 
@@ -93,7 +101,7 @@ inquirer.prompt ([
   E-Mail: ${response.authorEmail}
 
 
-  ## License
+  ### License
   ${response.license}
   ` // generateMarkdown
   writeFile(generateMarkdown);
