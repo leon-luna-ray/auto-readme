@@ -2,7 +2,7 @@
 
   ## Description
 
-  A command line application to seamlessly create a new ReadMe file for your projects quickly!
+  A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
 
   ## Table of Contents
 
@@ -21,7 +21,7 @@
 
   ## Usage
   This application runs on node js from the command line. Once cloned to your machine, open the folder with the index.js file in your integrated terminal and run the command 'node index.js.' Inquirer will then prompt you for all of the questions for what to include in your readme and create the new md file. See the video link below!
-  
+
   [Video](https://youtu.be/XI6C2lgj540)
 
   ## Technologies
