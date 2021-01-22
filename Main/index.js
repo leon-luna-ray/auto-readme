@@ -66,9 +66,9 @@ inquirer.prompt ([
   * [Technologies](#technologies)
   * [Known-Bugs](#known-bugs)
   * [Next-Steps](#next-steps)
-  * [License] (#license)
+  * [License](#license)
   * [Contact](#contact)
-  * [Links] (#links)
+  * [Links](#links)
 
   ## Image
 
