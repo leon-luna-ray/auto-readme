@@ -32,7 +32,7 @@
 
   ## Known-Bugs
 
-  Trouble with getting some links to work in the table of contents and the screenshot when rendered by the app. Can be fixed by entering it manually in the md file.
+  Trouble with getting some links to work in the table of contents and the screenshot when rendered by the app. Appears to be fixed but if not can be fixed by entering it manually in the md file.
 
   ## Next-Steps
 
