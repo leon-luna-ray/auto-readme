@@ -7,6 +7,7 @@
   ## Table of Contents
 
   * [Image](#image)
+  * [Usage](#usage)
   * [Technologies](#technologies)
   * [Known-Bugs](#known-bugs)
   * [Next-Steps](#next-steps)
@@ -17,6 +18,10 @@
   ## Image
 
   ![Screenshot](https://github.com/leon-luna-ray/hw09-readme-generator/blob/main/assets/images/app-screenshot.png)
+
+  ## Usage
+
+  [Video](https://youtu.be/XI6C2lgj540)
 
   ## Technologies
 
@@ -30,7 +35,7 @@
 
   ## Next-Steps
 
-  Add functionality to add bullet point lists, add links to technologies section and fix bugs listed above.
+  Add functionality to add bullet point lists, add links to technologies section and fix bugs listed above and add additional sections further on as needed.
 
   ## License
 

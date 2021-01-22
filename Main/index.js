@@ -56,9 +56,6 @@ inquirer.prompt ([
   const markdownTemplate =`
 # ${response.title}
 
----
-
-  \n
   ## Description
 
   ${response.description}
