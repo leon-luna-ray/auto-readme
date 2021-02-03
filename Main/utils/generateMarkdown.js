@@ -20,4 +20,8 @@ function renderLicenseLink(license) {
   return '';
 }
 
+// Work on getting the technologies and thier links here to be generated for each one selected
+
+// Later add a way to enter ones manually in the app
+
 module.exports = {renderLicenseBadge, renderLicenseLink};

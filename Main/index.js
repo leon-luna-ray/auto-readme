@@ -17,9 +17,10 @@ inquirer.prompt ([
     message: 'A short description of the project',
   },
   {
-    type: 'input',
+    type: 'checkbox',
     name: 'technologies',
     message: 'Which technologies were used?',
+    choices: ['HTML', 'CSS', 'Javascript', 'Bootstrap', 'Font Awesome', 'Node', 'Jquery']
   },
   {
     type: 'input',
@@ -53,6 +54,9 @@ inquirer.prompt ([
     choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
   },
 ]).then((response) => {
+
+  // Work to create a function in generate markup that will take each technology selected from the checklist and append it here by invoking the function and passing in the array as a parameter. Similar to how the license link was rendered.
+
   const markdownTemplate =`
 # ${response.title}
 
@@ -75,7 +79,7 @@ inquirer.prompt ([
   ![Screenshot](${response.imageUrl})
 
   ## Technologies
-
+  
   ${response.technologies}
 
   ## Known-Bugs
