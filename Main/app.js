@@ -35,7 +35,7 @@ inquirer.prompt ([
   {
     type: 'input',
     name: 'imageUrl',
-    message: 'What is the project image URL?',
+    message: 'What is the project image URL or file path?',
   },
   {
     type: 'input',
