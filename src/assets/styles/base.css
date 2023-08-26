@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    @apply font-mono;
+    @apply font-mono text-[1.25rem];
   }
   h1,
   .h1 {
