@@ -1,0 +1,29 @@
+@tailwind base;
+
+@layer base {
+  body {
+    @apply font-mono;
+  }
+  h1,
+  .h1 {
+    @apply text-[4rem] font-bold;
+  }
+  h2,
+  .h2 {
+    @apply text-[3rem] font-bold;
+  }
+  h3,
+  .h3 {
+    @apply text-[2rem] font-bold;
+  }
+  h4,
+  .h4 {
+    @apply text-[1rem] font-bold;
+  }
+  #vue-app.hacker {
+    @apply bg-black text-hacker-green;
+  }
+  #vue-app.bsod {
+    @apply bg-bsod-blue text-white;
+  }
+}

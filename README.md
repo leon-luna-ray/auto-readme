@@ -1,6 +1,7 @@
   # ReadMe Generator
 
   ## Description
+  This application is currently being refactored as a web app.
 
   A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
 
@@ -43,10 +44,10 @@
   This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  
+
   ## Contact
 
-  ### Author: Ray Luna 
+  ### Author: Ray Luna
 
   If you have any questions about the repo, open an issue or contact me directly at:
   - E-Mail: leon.luna.ray@gmail.com
@@ -56,4 +57,3 @@
 
   - [Project Repository](https://github.com/leon-luna-ray/hw09-readme-generator)
 
-  
