@@ -1,19 +1,30 @@
 <template>
-  <div class="h-screen blue-border hi">
-    <div class="p-[1rem] m-[2rem] red-border">Readme Generator</div>
-    <div class="terminal font-mono border border-gray-300 p-4">
-      <div v-for="(line, index) in lines" :key="index" class="animate-line-reveal relative">
-        {{ line }}
+  <div id="vue-app" :class="['h-screen container py-[1rem]', theme]">
+    <header class="flex justify-between items-center">
+      <h1>ReadMe Generator</h1>
+      <div class="theme-controls flex gap-x-[1rem]">
+        <div class="theme-btn bg-hacker-green" @click="setTheme('hacker')"></div>
+        <div class="theme-btn bg-bsod-blue border border-white" @click="setTheme('bsod')"></div>
+        <div class="theme-btn bg-white border border-black" @click="setTheme('')"></div>
       </div>
+    </header>
+    <div class="main flex flex-col gap-y-[2rem]">
+      <TerminalText :string="content.intro" :speed="500" />
+      <TerminalText :string="content.ready_text" :speed="500" :delay="2000" />
     </div>
+
   </div>
 </template>
+
 <script setup>
 import { ref } from 'vue';
+import { content } from './lib/content'
 
-const lines = ref([
-  "Welcome to the Vue Terminal Component!",
-  "This is line 2.",
-  "And this is the third line.",
-])
+import TerminalText from './components/TerminalText.vue'
+
+const theme = ref('hacker');
+
+const setTheme = (value) => {
+  theme.value = value;
+}
 </script>

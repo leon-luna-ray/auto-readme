@@ -2,12 +2,20 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
+    container: {
+      padding: '2rem',
+      center: true,
+    },
     extend: {
+      colors: {
+        'hacker-green': '#00FF00',
+        'bsod-blue': '#0000aa'
+      },
       animation: {
         none: 'none',
         bounce: 'bounce 1s infinite',
         line: 'line 5s cubic-bezier(0.07, 0.15, 0.6, .75) infinite',
-        'line-reveal': 'line-reveal 5s cubic-bezier(0.07, 0.15, 0.6, 0.75) infinite',
+        'line-reveal': 'line-reveal 0.5s cubic-bezier(0.07, 0.15, 0.6, 0.75)',
         ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
         pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         spin: 'spin 1s linear infinite',
