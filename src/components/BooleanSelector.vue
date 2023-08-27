@@ -18,11 +18,32 @@ const isSelectionMade = ref(false);
 // Methods
 const handleTrue = () => {
     if (!isSelectionMade.value) {
-        emit('true')
         isSelectionMade.value = true;
+        emit('true')
     }
 }
 const handleFalse = () => {
+    isSelectionMade.value = true;
     emit('false')
 }
+const handleKeyup = (event) => {
+    if (event.key == 'y') {
+        handleTrue();
+    } else if (event.key == 'n') {
+        handleFalse();
+    }
+};
+
+// Watchers
+watch(isSelectionMade, () => {
+    window.removeEventListener('keyup', handleKeyup);
+})
+
+// Lifecycle
+onMounted(() => {
+    window.addEventListener('keyup', handleKeyup);
+});
+onBeforeUnmount(() => {
+    window.removeEventListener('keyup', handleKeyup);
+});
 </script>
