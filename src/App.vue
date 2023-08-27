@@ -33,6 +33,7 @@ const formStore = useFormStore();
 // State
 const isReady = ref(false);
 
+// Methods
 const reloadPage = () => {
   location.reload()
 }

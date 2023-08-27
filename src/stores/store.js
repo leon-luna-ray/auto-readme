@@ -23,9 +23,13 @@ export const useFormStore = defineStore('form', () => {
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };
+  const handleSubmit = (event)=>{
+    console.log(event.target[0].value)
+  }
 
   return {
     isFormStarted,
+    handleSubmit,
     setIsFormStarted,
   };
 });
