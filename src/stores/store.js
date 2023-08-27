@@ -30,7 +30,7 @@ export const useGlobalStore = defineStore('global', () => {
 
   return {
     indicator,
-    localTimeOfDay,
+    // localTimeOfDay,
     theme,
     setTheme,
   };
