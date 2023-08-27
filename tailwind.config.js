@@ -9,7 +9,7 @@ export default {
     extend: {
       colors: {
         'hacker-green': '#00FF00',
-        'bsod-blue': '#0000aa'
+        'bsod-blue': '#0000aa',
       },
       fontFamily: {
         anonymous: ['Anonymous Pro', 'monospace'],
@@ -59,6 +59,14 @@ export default {
         pulse: {
           '50%': {
             opacity: '.5',
+          },
+        },
+        slide: {
+          '0%': {
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            transform: 'translateX(0)',
           },
         },
         spin: {
