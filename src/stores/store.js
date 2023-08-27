@@ -42,13 +42,15 @@ export const useFormStore = defineStore('form', () => {
   const isFormStarted = ref(false);
   const questions = ref([]);
 
-  // Methods
+  // Setters
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };
   const setQuestions = (newQuestions) => {
     questions.value = newQuestions;
   };
+
+  // Methods
   const handleSubmit = (event) => {
     const downloadLink = document.getElementById('downloadLink');
     const title = event.target[0].value;
@@ -60,12 +62,10 @@ export const useFormStore = defineStore('form', () => {
     downloadLink.href = url;
     downloadLink.download = 'README.md';
 
-    // Delay Download
     setTimeout(() => {
       downloadLink.click();
-    }, 1000);
-
-    URL.revokeObjectURL(url);
+      URL.revokeObjectURL(url);
+    }, 200);
   };
 
   return {

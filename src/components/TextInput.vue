@@ -1,24 +1,31 @@
 <template>
     <div class="text-input flex-col-1">
-        <label for="title">What is the project title?</label>
+        <label for="title">{{ data.prompt }}</label>
         <input type="text" for="title" class="outline-none" ref="inputRef" @keyup.prevent="e => handleKeyup(e)">
     </div>
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useFormStore } from '../stores/store'
 
 const emit = defineEmits(['complete']);
 
-const porps = defineProps({
+const props = defineProps({
     data: {
         type: Object,
+        required: true,
+    },
+    index: {
+        type: Number,
         required: true,
     }
 })
 
+// Store
+const formStore = useFormStore();
+
 // State
 const inputRef = ref(null);
-const isComplete = ref(false);
 
 // Methods
 const preventClick = (event) => {
@@ -30,15 +37,15 @@ const preventClick = (event) => {
 const handleKeyup = (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
-        console.log(event.key)
+        formStore.questions[props.index].value = inputRef.value.value;
     }
 };
-
 // Watchers
-watch(isComplete, () => {
-    window.removeEventListener('keyup', handleKeyup);
+watch(() => formStore.questions[props.index]?.value, (newValue) => {
+    if (newValue) {
+        document.removeEventListener('keyup', handleKeyup);
+    }
 })
-
 // Lifecycle
 onMounted(() => {
     document.addEventListener('click', preventClick);
@@ -52,4 +59,3 @@ onBeforeUnmount(() => {
     document.removeEventListener('keyup', handleKeyup);
 });
 </script>
-å

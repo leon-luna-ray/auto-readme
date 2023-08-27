@@ -1,7 +1,6 @@
 <template>
     <form v-if="formStore.questions?.length" class="flex flex-col gap-y-[1rem]" @submit.prevent="console.log('submit')">
-        <component v-for="(question, index) in formStore.questions" :is="mapTypeComponents[question.type]" :data="question"
-            @complete="console.log('complete!')">
+        <component v-for="(question, index) in formStore.questions" :is="mapTypeComponents[question.type]" :data="question" :index="index">
         </component>
     </form>
     <a id="downloadLink" style="display: none">Download</a>
