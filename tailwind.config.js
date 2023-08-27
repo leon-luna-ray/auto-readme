@@ -11,6 +11,11 @@ export default {
         'hacker-green': '#00FF00',
         'bsod-blue': '#0000aa'
       },
+      fontFamily: {
+        anonymous: ['Anonymous Pro', 'monospace'],
+        tech: ['Share Tech Mono', 'monospace'],
+        vt: ['VT323', 'monospace'],
+      },
       animation: {
         none: 'none',
         bounce: 'bounce 1s infinite',

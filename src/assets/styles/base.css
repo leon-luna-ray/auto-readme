@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    @apply font-mono text-[1.25rem];
+    @apply font-anonymous text-[1.25rem];
   }
   h1,
   .h1 {
@@ -25,10 +25,10 @@
   }
   #vue-app.hacker,
   #vue-app.hacker input {
-    @apply bg-black text-hacker-green;
+    @apply bg-black text-hacker-green font-tech;
   }
   #vue-app.bsod,
   #vue-app.bsod input {
-    @apply bg-bsod-blue text-white;
+    @apply bg-bsod-blue text-white font-vt;
   }
 }
