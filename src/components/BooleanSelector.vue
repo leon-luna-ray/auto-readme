@@ -26,9 +26,9 @@ const isClickable = computed(() => ({
     'hover:cursor-pointer': !isComplete.value,
 }))
 const hoverStateColors = computed(() => ({
-    'hover:bg-hacker-green hover:text-black': !isComplete.value && globalStore.theme === 'hacker',
-    'hover:bg-white hover:text-bsod-blue': !isComplete.value && globalStore.theme === 'bsod',
-    'hover:bg-black hover:text-white': !isComplete.value && globalStore.theme === '',
+    'hover:bg-hacker-green hover:text-black hover:p-1': !isComplete.value && globalStore.theme === 'hacker',
+    'hover:bg-white hover:text-bsod-blue hover:p-1': !isComplete.value && globalStore.theme === 'bsod',
+    'hover:bg-black hover:text-white hover:p-1': !isComplete.value && globalStore.theme === '',
 }))
 
 // Methods
