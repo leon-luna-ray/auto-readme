@@ -19,10 +19,13 @@ export const useGlobalStore = defineStore('global', () => {
 // Form
 export const useFormStore = defineStore('form', () => {
   const isFormStarted = ref(false);
-  // Load questions into a reactive?
+  const questions = ref([]);
 
   const setIsFormStarted = () => {
     isFormStarted.value = true;
+  };
+  const setQuestions = (newQuestions) => {
+    questions.value = newQuestions;
   };
   const handleSubmit = (event) => {
     const downloadLink = document.getElementById('downloadLink');
@@ -41,7 +44,9 @@ export const useFormStore = defineStore('form', () => {
 
   return {
     isFormStarted,
+    questions,
     handleSubmit,
     setIsFormStarted,
+    setQuestions,
   };
 });

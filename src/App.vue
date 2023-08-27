@@ -1,19 +1,22 @@
 <template>
-  <div id="vue-app" :class="['h-screen container py-[1rem]', globalStore.theme]">
-    <header class="flex justify-between items-center">
-      <h1>ReadMe Generator</h1>
-      <ThemeControls />
-    </header>
-    <main class="main flex-col-2">
-      <div class="intro flex-col-2">
-        <TerminalText :string="content.intro" :speed="500" />
-        <div v-if="isReady" class="flex gap-x-[1rem]">
-          <p>>>>>>> {{ content.ready_text }}</p>
-          <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
+  <div id="vue-app" :class="['py-[1rem]', globalStore.theme]">
+    <div class="container">
+
+      <header class="flex justify-between items-center">
+        <h1>{{ content.title }}</h1>
+        <ThemeControls />
+      </header>
+      <main class="main flex-col-2">
+        <div class="intro flex-col-2">
+          <TerminalText :string="content.intro" :speed="500" />
+          <div v-if="isReady" class="flex gap-x-[1rem]">
+            <p>>>>>>> {{ content.ready_text }}</p>
+            <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
+          </div>
         </div>
-      </div>
-      <Form v-if="formStore.isFormStarted" />
-    </main>
+        <Form v-if="formStore.isFormStarted" :questions="content.questions" />
+      </main>
+    </div>
   </div>
 </template>
 <script setup>
@@ -40,6 +43,8 @@ const reloadPage = () => {
 
 // Lifecycle
 onMounted(() => {
+  formStore.setQuestions(content.questions);
+
   setTimeout(() => {
     isReady.value = true;
   }, 2000)

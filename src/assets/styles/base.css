@@ -23,6 +23,9 @@
   input {
     @apply px-0;
   }
+  #vue-app {
+    @apply h-screen w-screen;
+  }
   #vue-app.hacker,
   #vue-app.hacker input {
     @apply bg-black text-hacker-green font-tech;

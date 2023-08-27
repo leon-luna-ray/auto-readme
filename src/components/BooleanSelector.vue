@@ -12,23 +12,23 @@ import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
 
 // State
 const emit = defineEmits(['true', 'false']);
-const isSelectionMade = ref(false);
+const isComplete = ref(false);
 
 // Computed
 const isClickable = computed(() => ({
-    'hover:cursor-pointer': !isSelectionMade.value,
+    'hover:cursor-pointer': !isComplete.value,
 }))
 
 // Methods
 const handleTrue = () => {
-    if (!isSelectionMade.value) {
-        isSelectionMade.value = true;
+    if (!isComplete.value) {
+        isComplete.value = true;
         emit('true')
     }
 }
 const handleFalse = () => {
-    if (!isSelectionMade.value) {
-        isSelectionMade.value = true;
+    if (!isComplete.value) {
+        isComplete.value = true;
         emit('false')
     }
 }
@@ -41,7 +41,7 @@ const handleKeyup = (event) => {
 };
 
 // Watchers
-watch(isSelectionMade, () => {
+watch(isComplete, () => {
     window.removeEventListener('keyup', handleKeyup);
 })
 
