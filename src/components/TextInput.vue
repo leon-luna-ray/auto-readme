@@ -5,7 +5,7 @@
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 const emit = defineEmits(['complete']);
 const porps = defineProps({
@@ -14,17 +14,27 @@ const porps = defineProps({
         required: true,
     }
 })
-// State
-const isComplete = ref(false);
-const inputRef = ref(null);
-// Methods
-const setIsComplete = () => {
-    isComplete.value = true;
-}
 
+// State
+const inputRef = ref(null);
+
+// Methods
+const preventClick = (event) => {
+    if (inputRef.value && !inputRef.value.contains(event.target)) {
+        event.stopPropagation();
+        inputRef.value.focus();
+    }
+};
+
+// Lifecycle
 onMounted(() => {
+    document.addEventListener('click', preventClick);
+
     if (inputRef.value) {
         inputRef.value.focus();
     }
+});
+onBeforeUnmount(() => {
+    document.removeEventListener('click', preventClick);
 });
 </script>
