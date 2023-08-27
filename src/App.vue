@@ -9,7 +9,7 @@
         <TerminalText :string="content.intro" :speed="500" />
         <div v-if="isReady" class="flex gap-x-[1rem]">
           <p>{{ content.ready_text }}</p>
-          <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
+          <BooleanSelector :is-active="isReady" @true="formStore.setIsFormStarted" @false="reloadPage" />
         </div>
       </div>
       <Form v-if="formStore.isFormStarted" />
