@@ -23,9 +23,27 @@ export const useFormStore = defineStore('form', () => {
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };
-  const handleSubmit = (event)=>{
-    console.log(event.target[0].value)
-  }
+  const handleSubmit = (event) => {
+    const title = event.target[0].value;
+    const mdContent = `# ${title}`;
+    const blob = new Blob([mdContent], { type: 'text/markdown' });
+    const mdFile = new File([blob], 'README.md');
+
+    const url = URL.createObjectURL(mdFile);
+
+    // Get the download link element
+    const downloadLink = document.getElementById('downloadLink');
+
+    // Set the href and download attributes for the link
+    downloadLink.href = url;
+    downloadLink.download = 'README.md';
+
+    // Simulate a click on the link to trigger the download
+    downloadLink.click();
+
+    // Clean up by revoking the Blob URL
+    URL.revokeObjectURL(url);
+  };
 
   return {
     isFormStarted,
