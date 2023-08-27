@@ -45,9 +45,9 @@ const handleFalse = () => {
     }
 }
 const handleKeyup = (event) => {
-    if (event.key === 'y') {
+    if (event.key === 'y' || event.key === 'Y') {
         handleTrue();
-    } else if (event.key === 'n') {
+    } else if (event.key === 'n' || event.key === 'N') {
         handleFalse();
     }
 };
