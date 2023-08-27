@@ -23,15 +23,23 @@
   input {
     @apply px-0;
   }
+
+  /* themes */
   #vue-app {
     @apply h-screen w-screen;
   }
-  #vue-app.hacker,
-  #vue-app.hacker input {
-    @apply bg-black text-hacker-green font-tech;
-  }
   #vue-app.bsod,
   #vue-app.bsod input {
-    @apply bg-bsod-blue text-white font-vt;
+    @apply bg-bsod-blue text-white font-tech;
+  }
+  #vue-app.hacker,
+  #vue-app.hacker input {
+    @apply bg-black text-hacker-green font-vt text-[1.5rem];
+  }
+  #vue-app.hacker h1 {
+    @apply text-[5rem];
+  }
+  #vue-app.hacker * {
+    @apply text-[1.5rem];
   }
 }

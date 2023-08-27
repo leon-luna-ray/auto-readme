@@ -22,7 +22,7 @@ export default {
         line: 'line 5s cubic-bezier(0.07, 0.15, 0.6, .75) infinite',
         'line-reveal': 'line-reveal 0.5s cubic-bezier(0.07, 0.15, 0.6, 0.75)',
         ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
-        pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        pulse: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         slide: 'slide 1s ease-in-out infinite alternate, slide-out 1s ease-in-out 1s infinite alternate',
         spin: 'spin 1s linear infinite',
         'spin-slow': 'spin 3s linear infinite',
@@ -59,7 +59,7 @@ export default {
         },
         pulse: {
           '50%': {
-            opacity: '.5',
+            opacity: '.3',
           },
         },
         slide: {
