@@ -3,13 +3,18 @@ export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     container: {
-      padding: '2rem',
+      padding: '1rem',
       center: true,
     },
     extend: {
       colors: {
         'hacker-green': '#00FF00',
         'bsod-blue': '#0000aa'
+      },
+      fontFamily: {
+        anonymous: ['Anonymous Pro', 'monospace'],
+        tech: ['Share Tech Mono', 'monospace'],
+        vt: ['VT323', 'monospace'],
       },
       animation: {
         none: 'none',

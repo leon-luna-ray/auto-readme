@@ -1,15 +1,36 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
 // Global
 export const useGlobalStore = defineStore('global', () => {
+  // State
+  const indicator = '>>>>>> ';
   const theme = ref('hacker');
 
+  // TODO use this to determine inital theme loaded on mounted
+  // const localTimeOfDay = computed(() => {
+  //   const now = new Date();
+  //   const timeZoneOffset = now.getTimezoneOffset();
+  //   const utcHour = now.getUTCHours();
+  //   const localHour = (utcHour + timeZoneOffset / 60 + 24) % 24;
+
+  //   if (localHour >= 5 && localHour < 13) {
+  //     return "morning";
+  //   } else if (localHour >= 13 && localHour < 21) {
+  //     return "midday";
+  //   } else {
+  //     return "night";
+  //   }
+  // });
+
+  // Methods
   const setTheme = (value) => {
     theme.value = value;
   };
 
   return {
+    indicator,
+    // localTimeOfDay,
     theme,
     setTheme,
   };
@@ -17,37 +38,37 @@ export const useGlobalStore = defineStore('global', () => {
 
 // Form
 export const useFormStore = defineStore('form', () => {
+  // State
   const isFormStarted = ref(false);
-  // Load questions into a reactive?
+  const questions = ref([]);
 
+  // Methods
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };
+  const setQuestions = (newQuestions) => {
+    questions.value = newQuestions;
+  };
   const handleSubmit = (event) => {
+    const downloadLink = document.getElementById('downloadLink');
     const title = event.target[0].value;
     const mdContent = `# ${title}`;
     const blob = new Blob([mdContent], { type: 'text/markdown' });
     const mdFile = new File([blob], 'README.md');
-
     const url = URL.createObjectURL(mdFile);
 
-    // Get the download link element
-    const downloadLink = document.getElementById('downloadLink');
-
-    // Set the href and download attributes for the link
     downloadLink.href = url;
     downloadLink.download = 'README.md';
-
-    // Simulate a click on the link to trigger the download
     downloadLink.click();
 
-    // Clean up by revoking the Blob URL
     URL.revokeObjectURL(url);
   };
 
   return {
     isFormStarted,
+    questions,
     handleSubmit,
     setIsFormStarted,
+    setQuestions,
   };
 });

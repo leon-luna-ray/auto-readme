@@ -1,47 +1,59 @@
 <template>
     <div>
         <span>[</span>
-        <span :class="isClickable" @click="handleTrue">Y</span>
+        <span :class="[isClickable, hoverStateColors]" @click="handleTrue">Y</span>
         <span> / </span>
-        <span :class="isClickable" @click="handleFalse">N</span>
+        <span :class="[isClickable, hoverStateColors]" @click="handleFalse">N</span>
         <span>]</span>
     </div>
 </template>
 <script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { useGlobalStore } from '../stores/store';
+import { storeToRefs } from 'pinia';
+
+// Emits
+const emit = defineEmits(['true', 'false']);
+
+// Store
+const globalStore = useGlobalStore();
 
 // State
-const emit = defineEmits(['true', 'false']);
-const isSelectionMade = ref(false);
+const isComplete = ref(false);
 
 // Computed
 const isClickable = computed(() => ({
-    'hover:cursor-pointer': !isSelectionMade.value,
+    'hover:cursor-pointer': !isComplete.value,
+}))
+const hoverStateColors = computed(() => ({
+    'hover:bg-hacker-green hover:text-black': !isComplete.value && globalStore.theme === 'hacker',
+    'hover:bg-white hover:text-bsod-blue': !isComplete.value && globalStore.theme === 'bsod',
+    'hover:bg-black hover:text-white': !isComplete.value && globalStore.theme === '',
 }))
 
 // Methods
 const handleTrue = () => {
-    if (!isSelectionMade.value) {
-        isSelectionMade.value = true;
+    if (!isComplete.value) {
+        isComplete.value = true;
         emit('true')
     }
 }
 const handleFalse = () => {
-    if (!isSelectionMade.value) {
-        isSelectionMade.value = true;
+    if (!isComplete.value) {
+        isComplete.value = true;
         emit('false')
     }
 }
 const handleKeyup = (event) => {
-    if (event.key == 'y') {
+    if (event.key === 'y') {
         handleTrue();
-    } else if (event.key == 'n') {
+    } else if (event.key === 'n') {
         handleFalse();
     }
 };
 
 // Watchers
-watch(isSelectionMade, () => {
+watch(isComplete, () => {
     window.removeEventListener('keyup', handleKeyup);
 })
 

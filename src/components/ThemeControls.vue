@@ -6,6 +6,7 @@
       </div>
 </template>
 <script setup>
+
 import { useGlobalStore } from '../stores/store'
 
 const globalStore = useGlobalStore();
