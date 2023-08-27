@@ -1,30 +1,47 @@
 <template>
-  <div id="vue-app" :class="['h-screen container py-[1rem]', theme]">
+  <div id="vue-app" :class="['h-screen container py-[1rem]', globalStore.theme]">
     <header class="flex justify-between items-center">
       <h1>ReadMe Generator</h1>
-      <div class="theme-controls flex gap-x-[1rem]">
-        <div class="theme-btn bg-hacker-green" @click="setTheme('hacker')"></div>
-        <div class="theme-btn bg-bsod-blue border border-white" @click="setTheme('bsod')"></div>
-        <div class="theme-btn bg-white border border-black" @click="setTheme('')"></div>
-      </div>
+      <ThemeControls />
     </header>
-    <div class="main flex flex-col gap-y-[2rem]">
-      <TerminalText :string="content.intro" :speed="500" />
-      <TerminalText :string="content.ready_text" :speed="500" :delay="2000" />
-    </div>
-
+    <main class="main flex-col-2">
+      <div class="intro flex-col-2">
+        <TerminalText :string="content.intro" :speed="500" />
+        <div v-if="isReady" class="flex gap-x-[1rem]">
+          <p>>>>>>> {{ content.ready_text }}</p>
+          <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
+        </div>
+      </div>
+      <Form v-if="formStore.isFormStarted" />
+    </main>
   </div>
 </template>
-
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useGlobalStore, useFormStore } from './stores/store'
 import { content } from './lib/content'
 
+import BooleanSelector from './components/BooleanSelector.vue'
+import Form from './components/Form.vue'
+import ThemeControls from './components/ThemeControls.vue'
 import TerminalText from './components/TerminalText.vue'
 
-const theme = ref('hacker');
+// Store
+const globalStore = useGlobalStore();
+const formStore = useFormStore();
 
-const setTheme = (value) => {
-  theme.value = value;
+// State
+const isReady = ref(false);
+
+// Methods
+const reloadPage = () => {
+  location.reload()
 }
+
+// Lifecycle
+onMounted(() => {
+  setTimeout(() => {
+    isReady.value = true;
+  }, 2000)
+})
 </script>
