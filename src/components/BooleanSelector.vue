@@ -7,10 +7,10 @@
         <span>]</span>
     </div>
 </template>
+
 <script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useGlobalStore } from '../stores/store';
-import { storeToRefs } from 'pinia';
 
 // Emits
 const emit = defineEmits(['true', 'false']);

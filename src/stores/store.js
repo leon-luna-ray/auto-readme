@@ -59,7 +59,11 @@ export const useFormStore = defineStore('form', () => {
 
     downloadLink.href = url;
     downloadLink.download = 'README.md';
-    downloadLink.click();
+
+    // Delay Download
+    setTimeout(() => {
+      downloadLink.click();
+    }, 1000);
 
     URL.revokeObjectURL(url);
   };
