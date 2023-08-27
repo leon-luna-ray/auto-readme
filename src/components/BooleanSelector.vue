@@ -3,7 +3,7 @@
         <span>[</span>
         <span :class="[isClickable, hoverStateColors]" @click="handleTrue">Y</span>
         <span> / </span>
-        <span :class="isClickable" @click="handleFalse">N</span>
+        <span :class="[isClickable, hoverStateColors]" @click="handleFalse">N</span>
         <span>]</span>
     </div>
 </template>
@@ -26,7 +26,9 @@ const isClickable = computed(() => ({
     'hover:cursor-pointer': !isComplete.value,
 }))
 const hoverStateColors = computed(() => ({
-    'hover:bg-hacker-green hover:text-black': globalStore.theme === 'hacker',
+    'hover:bg-hacker-green hover:text-black': !isComplete.value && globalStore.theme === 'hacker',
+    'hover:bg-white hover:text-bsod-blue': !isComplete.value && globalStore.theme === 'bsod',
+    'hover:bg-black hover:text-white': !isComplete.value && globalStore.theme === '',
 }))
 
 // Methods
