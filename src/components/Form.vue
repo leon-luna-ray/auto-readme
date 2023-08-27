@@ -1,5 +1,6 @@
 <template>
-    <form v-if="formStore.questions?.length" @submit.prevent="e => formStore.handleSubmit(e)" class="flex flex-col gapp-y-[1rem]">
+    <form v-if="formStore.questions?.length" @submit.prevent="e => formStore.handleSubmit(e)"
+        class="flex flex-col gapp-y-[1rem]">
         <component v-for="question in formStore.questions" :is="mapTypeComponents[question.type]" :data="question">
         </component>
     </form>
