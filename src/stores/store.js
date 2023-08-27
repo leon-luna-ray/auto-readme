@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
 
 // Global
@@ -7,6 +7,22 @@ export const useGlobalStore = defineStore('global', () => {
   const indicator = '>>>>>> ';
   const theme = ref('hacker');
 
+  // TODO use this to determine inital theme loaded on mounted
+  // const localTimeOfDay = computed(() => {
+  //   const now = new Date();
+  //   const timeZoneOffset = now.getTimezoneOffset();
+  //   const utcHour = now.getUTCHours();
+  //   const localHour = (utcHour + timeZoneOffset / 60 + 24) % 24;
+
+  //   if (localHour >= 5 && localHour < 13) {
+  //     return "morning";
+  //   } else if (localHour >= 13 && localHour < 21) {
+  //     return "midday";
+  //   } else {
+  //     return "night";
+  //   }
+  // });
+
   // Methods
   const setTheme = (value) => {
     theme.value = value;
@@ -14,6 +30,7 @@ export const useGlobalStore = defineStore('global', () => {
 
   return {
     indicator,
+    localTimeOfDay,
     theme,
     setTheme,
   };
