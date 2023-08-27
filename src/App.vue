@@ -10,7 +10,7 @@
         <div class="intro flex-col-2">
           <TerminalText :string="content.intro" :speed="500" />
           <div v-if="isReady" class="flex gap-x-[1rem]">
-            <p>>>>>>> {{ content.ready_text }}</p>
+            <p><span v-if="!formStore.isFormStarted">{{ globalStore.indicator }}</span> {{ content.ready_text }}</p>
             <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
           </div>
         </div>

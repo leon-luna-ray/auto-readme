@@ -3,14 +3,17 @@ import { defineStore } from 'pinia';
 
 // Global
 export const useGlobalStore = defineStore('global', () => {
-  // Todo Set preference to local storage
+  // State
+  const indicator = '>>>>>> ';
   const theme = ref('hacker');
 
+  // Methods
   const setTheme = (value) => {
     theme.value = value;
   };
 
   return {
+    indicator,
     theme,
     setTheme,
   };
@@ -18,9 +21,11 @@ export const useGlobalStore = defineStore('global', () => {
 
 // Form
 export const useFormStore = defineStore('form', () => {
+  // State
   const isFormStarted = ref(false);
   const questions = ref([]);
 
+  // Methods
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };

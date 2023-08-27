@@ -1,14 +1,13 @@
 <template>
-    <form v-if="formStore.questions?.length" @submit.prevent="e => formStore.handleSubmit(e)"
-        class="flex flex-col gapp-y-[1rem]">
-        <component v-for="question in formStore.questions" :is="mapTypeComponents[question.type]" :data="question">
+    <form v-if="formStore.questions?.length" class="flex flex-col gapp-y-[1rem]" @submit.prevent="console.log('submit')">
+        <component v-for="(question, index) in formStore.questions" :is="mapTypeComponents[question.type]" :data="question"
+            @complete="console.log('complete!')">
         </component>
     </form>
     <a id="downloadLink" style="display: none">Download</a>
 </template>
 <script setup>
 import { useFormStore } from '../stores/store'
-
 import BooleanSelector from './BooleanSelector.vue';
 import TextInput from './TextInput.vue'
 

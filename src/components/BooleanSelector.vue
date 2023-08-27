@@ -1,7 +1,7 @@
 <template>
     <div>
         <span>[</span>
-        <span :class="isClickable" @click="handleTrue">Y</span>
+        <span :class="[isClickable, hoverStateColors]" @click="handleTrue">Y</span>
         <span> / </span>
         <span :class="isClickable" @click="handleFalse">N</span>
         <span>]</span>
@@ -9,14 +9,24 @@
 </template>
 <script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
+import { useGlobalStore } from '../stores/store';
+import { storeToRefs } from 'pinia';
+
+// Emits
+const emit = defineEmits(['true', 'false']);
+
+// Store
+const globalStore = useGlobalStore();
 
 // State
-const emit = defineEmits(['true', 'false']);
 const isComplete = ref(false);
 
 // Computed
 const isClickable = computed(() => ({
     'hover:cursor-pointer': !isComplete.value,
+}))
+const hoverStateColors = computed(() => ({
+    'hover:bg-hacker-green hover:text-black': globalStore.theme === 'hacker',
 }))
 
 // Methods
@@ -33,9 +43,9 @@ const handleFalse = () => {
     }
 }
 const handleKeyup = (event) => {
-    if (event.key == 'y') {
+    if (event.key === 'y') {
         handleTrue();
-    } else if (event.key == 'n') {
+    } else if (event.key === 'n') {
         handleFalse();
     }
 };
