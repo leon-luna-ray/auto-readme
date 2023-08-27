@@ -1,19 +1,23 @@
 <template>
     <div>
         <span>[</span>
-        <span class="boolean-btn true" @click="handleTrue">Y</span>
+        <span :class="isClickable" @click="handleTrue">Y</span>
         <span> / </span>
-        <span class="boolean-btn false" @click="handleFalse">N</span>
+        <span :class="isClickable" @click="handleFalse">N</span>
         <span>]</span>
     </div>
 </template>
 <script setup>
-import { defineEmits, ref, watch, onMounted, onBeforeUnmount } from 'vue';
-
-const emit = defineEmits(['true', 'false']);
+import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue';
 
 // State
+const emit = defineEmits(['true', 'false']);
 const isSelectionMade = ref(false);
+
+// Computed
+const isClickable = computed(() => ({
+    'hover:cursor-pointer': !isSelectionMade.value,
+}))
 
 // Methods
 const handleTrue = () => {
@@ -23,8 +27,10 @@ const handleTrue = () => {
     }
 }
 const handleFalse = () => {
-    isSelectionMade.value = true;
-    emit('false')
+    if (!isSelectionMade.value) {
+        isSelectionMade.value = true;
+        emit('false')
+    }
 }
 const handleKeyup = (event) => {
     if (event.key == 'y') {

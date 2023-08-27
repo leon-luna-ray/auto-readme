@@ -1,15 +1,15 @@
 <template>
   <div id="vue-app" :class="['h-screen container py-[1rem]', globalStore.theme]">
     <header class="flex justify-between items-center">
-      <h1>ReadMe</h1>
+      <h1>ReadMe Generator</h1>
       <ThemeControls />
     </header>
     <main class="main flex-col-2">
       <div class="intro flex-col-2">
         <TerminalText :string="content.intro" :speed="500" />
         <div v-if="isReady" class="flex gap-x-[1rem]">
-          <p>{{ content.ready_text }}</p>
-          <BooleanSelector :is-active="isReady" @true="formStore.setIsFormStarted" @false="reloadPage" />
+          <p>>>>>>> {{ content.ready_text }}</p>
+          <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
         </div>
       </div>
       <Form v-if="formStore.isFormStarted" />

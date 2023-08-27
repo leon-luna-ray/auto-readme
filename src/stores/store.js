@@ -18,6 +18,7 @@ export const useGlobalStore = defineStore('global', () => {
 // Form
 export const useFormStore = defineStore('form', () => {
   const isFormStarted = ref(false);
+  // Load questions into a reactive?
 
   const setIsFormStarted = () => {
     isFormStarted.value = true;
