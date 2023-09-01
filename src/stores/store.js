@@ -42,7 +42,8 @@ export const useFormStore = defineStore('form', () => {
   const isFormStarted = ref(false);
   const questions = ref([]);
   const currentLength = ref(1);
-  const activeIndex = ref(0);
+
+  // const activeIndex = ref(0); use the isActiveIndex method
 
   // Computed
   const displayQuestions = computed(() => {
