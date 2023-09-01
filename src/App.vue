@@ -1,7 +1,6 @@
 <template>
   <div id="vue-app" :class="['py-[1rem]', globalStore.theme]">
     <div class="container">
-
       <header class="flex justify-between items-center">
         <h1>{{ content.title }}</h1>
         <ThemeControls />
