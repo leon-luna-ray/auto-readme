@@ -18,7 +18,7 @@ const props = defineProps({
     index: {
         type: Number,
         required: true,
-    }
+    },
 })
 
 // Store
@@ -38,24 +38,31 @@ const handleKeyup = (event) => {
     if (event.key === 'Enter') {
         event.preventDefault();
         formStore.questions[props.index].value = inputRef.value.value;
+        formStore.handleNextQuestion();
     }
 };
-// Watchers
-watch(() => formStore.questions[props.index]?.value, (newValue) => {
-    if (newValue) {
-        document.removeEventListener('keyup', handleKeyup);
-    }
-})
-// Lifecycle
-onMounted(() => {
-    document.addEventListener('click', preventClick);
-    document.addEventListener('keyup', handleKeyup);
+const addEventListeners = () => {
+    // document.addEventListener('click', preventClick);
+    // document.addEventListener('keyup', handleKeyup);
     if (inputRef.value) {
         inputRef.value.focus();
     }
-});
-onBeforeUnmount(() => {
+}
+const removeEventListeners = () => {
     document.removeEventListener('click', preventClick);
     document.removeEventListener('keyup', handleKeyup);
+}
+// Watchers
+// watch(() => formStore.questions[props.index]?.value, (newValue) => {
+//     if (newValue) {
+//         document.removeEventListener('keyup', handleKeyup);
+//     }
+// })
+// Lifecycle
+onMounted(() => {
+    addEventListeners();
+});
+onBeforeUnmount(() => {
+    // removeEventListeners();
 });
 </script>

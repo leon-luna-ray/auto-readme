@@ -41,6 +41,16 @@ export const useFormStore = defineStore('form', () => {
   // State
   const isFormStarted = ref(false);
   const questions = ref([]);
+  const currentLength = ref(1);
+  const activeIndex = ref(0);
+
+  // Computed
+  const displayQuestions = computed(() => {
+    if (questions.value.length) {
+      return questions.value.slice(0, currentLength.value);
+    }
+    return null;
+  });
 
   // Setters
   const setIsFormStarted = () => {
@@ -49,8 +59,21 @@ export const useFormStore = defineStore('form', () => {
   const setQuestions = (newQuestions) => {
     questions.value = newQuestions;
   };
+  const setIsIndexActive = (index, isActive) => {
+    questions.value[index].isActive = isActive;
+  };
+  const setCurrentLength = (length) => {
+    currentLength.value = length;
+  };
 
   // Methods
+  const isIndexActive = (index) => {
+    return questions.value[index].isActive;
+  };
+  const handleNextQuestion = () => {
+    currentLength.value++;
+    activeIndex.value++;
+  };
   const handleSubmit = (event) => {
     const downloadLink = document.getElementById('downloadLink');
     const title = event.target[0].value;
@@ -69,10 +92,17 @@ export const useFormStore = defineStore('form', () => {
   };
 
   return {
+    activeIndex,
+    currentLength,
+    displayQuestions,
     isFormStarted,
     questions,
     handleSubmit,
+    handleNextQuestion,
+    isIndexActive,
     setIsFormStarted,
+    setIsIndexActive,
     setQuestions,
+    setCurrentLength,
   };
 });

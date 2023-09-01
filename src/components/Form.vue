@@ -1,6 +1,7 @@
 <template>
-    <form v-if="formStore.questions?.length" class="flex flex-col gap-y-[1rem]" @submit.prevent="console.log('submit')">
-        <component v-for="(question, index) in formStore.questions" :is="mapTypeComponents[question.type]" :data="question" :index="index">
+    <form v-if="formStore.displayQuestions?.length" class="flex flex-col gap-y-[1rem]" @submit.prevent="console.log('submit')">
+        <component v-for="(question, index) in formStore.displayQuestions" :is="mapTypeComponents[question.type]" :data="question"
+            :index="index" :is-visible="isVisible(index)">
         </component>
     </form>
     <a id="downloadLink" style="display: none">Download</a>
@@ -22,6 +23,11 @@ const mapTypeComponents = {
     // boolean: BooleanSelector,
     text: TextInput,
 };
+
+const isVisible = (index) => {
+    if (index === 0) return true
+    return formStore.questions[index - 1]?.value !== undefined;
+}
 
 // Store
 const formStore = useFormStore();
