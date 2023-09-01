@@ -6,30 +6,58 @@ export const content = {
   questions: [
     {
       type: 'text',
+      name: 'title',
       prompt: 'What is the project title?',
     },
     {
-      type: 'boolean',
-      prompt: 'Is this an open source project?',
-      choices: ['yes', 'no']
+      type: 'text',
+      name: 'description',
+      prompt: 'A short description of the project',
+    },
+    // {
+    //   type: 'multi',
+    //   name: 'technologies',
+    //   prompt: 'Which technologies were used?',
+    //   choices: [
+    //     'HTML',
+    //     'CSS',
+    //     'Javascript',
+    //     'Bootstrap',
+    //     'Font Awesome',
+    //     'Node',
+    //     'Jquery',
+    //   ],
+    // },
+    {
+      type: 'text',
+      name: 'appUrl',
+      prompt: 'What is the project URL?',
     },
     {
-      type: 'multi',
-      prompt: 'What technologies are used in this project?',
-      choices: [
-        {
-          choice: 'A',
-          title: 'Vue.js',
-        },
-        {
-          choice: 'B',
-          title: 'React.js',
-        },
-        {
-          choice: 'A',
-          title: 'Svelte',
-        },
-      ]
+      type: 'text',
+      name: 'repoUrl',
+      prompt: 'What is the project repo URL?',
     },
+    {
+      type: 'text',
+      name: 'imageUrl',
+      prompt: 'What is the project image URL or file path?',
+    },
+    {
+      type: 'text',
+      name: 'bugs',
+      prompt: 'A despription of any known bugs',
+    },
+    {
+      type: 'text',
+      name: 'nextSteps',
+      prompt: 'Next steps for the project',
+    },
+    // {
+    //   type: 'list',
+    //   name: 'license',
+    //   prompt: 'What kind of license should your project have?',
+    //   choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'None'],
+    // },
   ],
 };

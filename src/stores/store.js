@@ -41,13 +41,39 @@ export const useFormStore = defineStore('form', () => {
   // State
   const isFormStarted = ref(false);
   const questions = ref([]);
+  const currentLength = ref(1);
 
-  // Methods
+  // const activeIndex = ref(0); use the isActiveIndex method
+
+  // Computed
+  const displayQuestions = computed(() => {
+    if (questions.value.length) {
+      return questions.value.slice(0, currentLength.value);
+    }
+    return null;
+  });
+
+  // Setters
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };
   const setQuestions = (newQuestions) => {
     questions.value = newQuestions;
+  };
+  const setIsIndexActive = (index, isActive) => {
+    questions.value[index].isActive = isActive;
+  };
+  const setCurrentLength = (length) => {
+    currentLength.value = length;
+  };
+
+  // Methods
+  const isIndexActive = (index) => {
+    return questions.value[index].isActive;
+  };
+  const handleNextQuestion = () => {
+    currentLength.value++;
+    activeIndex.value++;
   };
   const handleSubmit = (event) => {
     const downloadLink = document.getElementById('downloadLink');
@@ -59,16 +85,25 @@ export const useFormStore = defineStore('form', () => {
 
     downloadLink.href = url;
     downloadLink.download = 'README.md';
-    downloadLink.click();
 
-    URL.revokeObjectURL(url);
+    setTimeout(() => {
+      downloadLink.click();
+      URL.revokeObjectURL(url);
+    }, 200);
   };
 
   return {
+    activeIndex,
+    currentLength,
+    displayQuestions,
     isFormStarted,
     questions,
     handleSubmit,
+    handleNextQuestion,
+    isIndexActive,
     setIsFormStarted,
+    setIsIndexActive,
     setQuestions,
+    setCurrentLength,
   };
 });
