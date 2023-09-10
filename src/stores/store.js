@@ -51,16 +51,29 @@ export const useFormStore = defineStore('form', () => {
     }
     return null;
   });
-  const projectTitle = computed(() => {
-    const foundObject = questions.value.find((obj) => obj.name === 'title');
-    return foundObject ? foundObject.value : 'Title';
-  });
+  // const projectTitle = computed(() => {
+  //   const foundObject = questions.value.find((obj) => obj.name === 'title');
+  //   return foundObject ? foundObject.value : 'Title';
+  // });
   const isFormReady = computed(() => {
-    if (questions.value?.length && activeIndex.value === currentLength.value - 1) {
+    if (
+      questions.value?.length &&
+      activeIndex.value === currentLength.value - 1
+    ) {
       const lastQuestion = questions.value[questions.value.length - 1];
       return lastQuestion.hasOwnProperty('value');
     }
     return false;
+  });
+  const templates = computed(() => {
+    if (isFormReady.value) {
+      return questions.value.map((item) => {
+        if (typeof item.template === 'function') {
+          return item.template(item.value);
+        }
+      });
+    }
+    return null;
   });
 
   // Setters
@@ -89,10 +102,20 @@ export const useFormStore = defineStore('form', () => {
       activeIndex.value++;
     }
   };
+  const generateMarkdown = () => {
+    let mdContent = ``;
+
+    if (templates.value) {
+      templates.value.forEach((template) => {
+        mdContent += `${template}\n\n`;
+      });
+    }
+
+    return mdContent.trim();
+  };
   const handleSubmit = () => {
     const downloadLink = document.getElementById('downloadLink');
-    // TODO create template
-    const mdContent = `# ${projectTitle.value}`;
+    const mdContent = generateMarkdown();
     const blob = new Blob([mdContent], { type: 'text/markdown' });
     const mdFile = new File([blob], 'README.md');
     const url = URL.createObjectURL(mdFile);
@@ -113,6 +136,7 @@ export const useFormStore = defineStore('form', () => {
     isFormStarted,
     isFormReady,
     questions,
+    templates,
     handleSubmit,
     handleNextQuestion,
     isIndexActive,

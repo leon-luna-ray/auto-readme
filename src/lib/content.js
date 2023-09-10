@@ -9,11 +9,17 @@ export const content = {
       type: 'text',
       name: 'title',
       prompt: 'What is the project title?',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     {
       type: 'text',
       name: 'description',
       prompt: 'A short description of the project',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     // {
     //   type: 'multi',
@@ -33,26 +39,41 @@ export const content = {
       type: 'text',
       name: 'appUrl',
       prompt: 'What is the project URL?',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     {
       type: 'text',
       name: 'repoUrl',
       prompt: 'What is the project repo URL?',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     {
       type: 'text',
       name: 'imageUrl',
       prompt: 'What is the project image URL or file path?',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     {
       type: 'text',
       name: 'bugs',
       prompt: 'A despription of any known bugs',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     {
       type: 'text',
       name: 'nextSteps',
       prompt: 'Next steps for the project',
+      template: (title) => {
+        return `# ${title}`;
+      },
     },
     // {
     //   type: 'list',
