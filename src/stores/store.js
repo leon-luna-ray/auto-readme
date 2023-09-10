@@ -1,11 +1,11 @@
-import { ref, computed } from "vue";
-import { defineStore } from "pinia";
+import { ref, computed } from 'vue';
+import { defineStore } from 'pinia';
 
 // Global
-export const useGlobalStore = defineStore("global", () => {
+export const useGlobalStore = defineStore('global', () => {
   // State
-  const indicator = ">>>>>> ";
-  const theme = ref("hacker");
+  const indicator = '>>>>>> ';
+  const theme = ref('hacker');
 
   // TODO use this to determine inital theme loaded on mounted
   // const localTimeOfDay = computed(() => {
@@ -37,13 +37,12 @@ export const useGlobalStore = defineStore("global", () => {
 });
 
 // Form
-export const useFormStore = defineStore("form", () => {
+export const useFormStore = defineStore('form', () => {
   // State
   const isFormStarted = ref(false);
   const questions = ref([]);
   const currentLength = ref(1);
   const activeIndex = ref(0);
-  // use the isActiveIndex method
 
   // Computed
   const displayQuestions = computed(() => {
@@ -53,8 +52,15 @@ export const useFormStore = defineStore("form", () => {
     return null;
   });
   const projectTitle = computed(() => {
-    const foundObject = questions.value.find((obj) => obj.name === "title");
-    return foundObject ? foundObject.value : "Title";
+    const foundObject = questions.value.find((obj) => obj.name === 'title');
+    return foundObject ? foundObject.value : 'Title';
+  });
+  const isFormReady = computed(() => {
+    if (questions.value?.length && activeIndex.value === currentLength.value - 1) {
+      const lastQuestion = questions.value[questions.value.length - 1];
+      return lastQuestion.hasOwnProperty('value');
+    }
+    return false;
   });
 
   // Setters
@@ -83,17 +89,16 @@ export const useFormStore = defineStore("form", () => {
       activeIndex.value++;
     }
   };
-  // TODO need to layout the form data as well as add a confirmation boolean once all the questions are answered
   const handleSubmit = () => {
-    const downloadLink = document.getElementById("downloadLink");
+    const downloadLink = document.getElementById('downloadLink');
     // TODO create template
     const mdContent = `# ${projectTitle.value}`;
-    const blob = new Blob([mdContent], { type: "text/markdown" });
-    const mdFile = new File([blob], "README.md");
+    const blob = new Blob([mdContent], { type: 'text/markdown' });
+    const mdFile = new File([blob], 'README.md');
     const url = URL.createObjectURL(mdFile);
 
     downloadLink.href = url;
-    downloadLink.download = "README.md";
+    downloadLink.download = 'README.md';
 
     setTimeout(() => {
       downloadLink.click();
@@ -106,6 +111,7 @@ export const useFormStore = defineStore("form", () => {
     currentLength,
     displayQuestions,
     isFormStarted,
+    isFormReady,
     questions,
     handleSubmit,
     handleNextQuestion,

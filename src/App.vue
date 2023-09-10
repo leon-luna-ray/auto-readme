@@ -9,17 +9,24 @@
         <div class="intro flex-col-2">
           <TerminalText :string="content.intro" :speed="500" />
           <div v-if="isReady" class="flex gap-x-[1rem]">
-            <p><span v-if="!formStore.isFormStarted" class="animate-pulse">{{ globalStore.indicator }}</span> {{ content.ready_text }}</p>
+            <p><span v-if="!formStore.isFormStarted" class="animate-pulse">{{ globalStore.indicator }}</span> {{
+              content.ready_text }}</p>
             <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
           </div>
         </div>
         <Form v-if="formStore.isFormStarted" :questions="content.questions" />
+
+        <div v-if="formStore.isFormReady" class="flex gap-x-[1rem]">
+          <p><span class="animate-pulse">{{ globalStore.indicator }}</span> {{ content.download_text }}</p>
+          <BooleanSelector @true="formStore.handleSubmit" @false="reloadPage" />
+        </div>
       </main>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
+import { storeToRefs } from 'pinia';
 import { useGlobalStore, useFormStore } from './stores/store'
 import { content } from './lib/content'
 
@@ -33,12 +40,24 @@ const globalStore = useGlobalStore();
 const formStore = useFormStore();
 
 // State
+const { isFormReady } = storeToRefs(formStore);
 const isReady = ref(false);
 
 // Methods
 const reloadPage = () => {
   location.reload()
 }
+const scrollToBottom = () => {
+  setTimeout(() => {
+    window.scrollTo(0, document.body.scrollHeight);
+  }, 100)
+};
+
+// Watchers
+watch(isFormReady, () => {
+  console.log('form is ready')
+  scrollToBottom();
+})
 
 // Lifecycle
 onMounted(() => {
