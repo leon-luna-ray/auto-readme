@@ -1,7 +1,7 @@
 <template>
     <div class="text-input flex-col-1">
         <label for="title">{{ data.prompt }}</label>
-        <input type="text" for="title" class="outline-none" ref="inputRef" @keyup.prevent="e => handleKeyup(e)">
+        <input type="text" for="title" class="outline-none" ref="inputRef" :disabled="formStore.isFormReady" @keyup.prevent="e => handleKeyup(e)">
     </div>
 </template>
 <script setup>

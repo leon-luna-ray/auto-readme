@@ -1,65 +1,48 @@
-  # ReadMe Generator
+# ReadMe Generator
 
-  ## Description
-  This application is currently being refactored as a web app.
+## Description
 
-  A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
+A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
 
-  [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+This project orginally started as a Node.js command line application. I have since refactored it to become a frontend web appliation for easy access.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7104dfd9-1c49-44d3-bf7e-831730ab07c4/deploy-status)](https://app.netlify.com/sites/readme-generator-rldev/deploys)
 
+🚀 [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
 
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/7104dfd9-1c49-44d3-bf7e-831730ab07c4/deploy-status)](https://app.netlify.com/sites/readme-generator-rldev/deploys)
+## Image
 
-  ## Table of Contents
+![Screenshot](./src/assets/img/screenshot.png)
 
-  * [Image](#image)
-  * [Usage](#usage)
-  * [Technologies](#technologies)
-  * [Known-Bugs](#known-bugs)
-  * [Next-Steps](#next-steps)
-  * [License](#License)
-  * [Contact](#contact)
-  * [Links](#Links)
+## Technologies
+- Vue.js
+- CSS3
+- HTML5
+- JavaScript
+- Netlify
+- TailwindCSS
+- Vite.js
 
-  ## Image
+## Next-Steps
 
-  ![Screenshot](https://github.com/leon-luna-ray/hw09-readme-generator/blob/main/assets/images/app-screenshot.png)
+Further refine and expand the question set.
 
-  ## Usage
-  This application runs on node js from the command line. Once cloned to your machine, open the folder with the index.js file in your integrated terminal and run the command 'node index.js.' Inquirer will then prompt you for all of the questions for what to include in your readme and create the new md file. See the video link below!
+## License
 
-  [Video](https://youtu.be/XI6C2lgj540)
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
-  ## Technologies
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  - Javascript
-  - Node.js
-  - inquirer npm
+## Contact
 
-  ## Known-Bugs
+### Author: Ray Luna
 
-  Trouble with getting some links to work in the table of contents and the screenshot when rendered by the app. Appears to be fixed but if not can be fixed by entering it manually in the md file.
+If you have any questions about the repo, open an issue or contact me directly at:
 
-  ## Next-Steps
+- E-Mail: leon.luna.ray@gmail.com
+- GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
 
-  Add functionality to add bullet point lists, add links to technologies section and fix bugs listed above and add additional sections further on as needed.
+## Links
 
-  ## License
-
-  This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
-
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-  ## Contact
-
-  ### Author: Ray Luna
-
-  If you have any questions about the repo, open an issue or contact me directly at:
-  - E-Mail: leon.luna.ray@gmail.com
-  - GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
-
-  ## Links
-
-  - [Project Repository](https://github.com/leon-luna-ray/hw09-readme-generator)
-
+- [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+- [Project Repository](https://github.com/leon-luna-ray/readme-generator)

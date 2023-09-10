@@ -42,14 +42,36 @@ export const useFormStore = defineStore('form', () => {
   const isFormStarted = ref(false);
   const questions = ref([]);
   const currentLength = ref(1);
-
   const activeIndex = ref(0);
-  // use the isActiveIndex method
 
   // Computed
   const displayQuestions = computed(() => {
     if (questions.value.length) {
       return questions.value.slice(0, currentLength.value);
+    }
+    return null;
+  });
+  // const projectTitle = computed(() => {
+  //   const foundObject = questions.value.find((obj) => obj.name === 'title');
+  //   return foundObject ? foundObject.value : 'Title';
+  // });
+  const isFormReady = computed(() => {
+    if (
+      questions.value?.length &&
+      activeIndex.value === currentLength.value - 1
+    ) {
+      const lastQuestion = questions.value[questions.value.length - 1];
+      return lastQuestion.hasOwnProperty('value');
+    }
+    return false;
+  });
+  const templates = computed(() => {
+    if (isFormReady.value) {
+      return questions.value.map((item) => {
+        if (typeof item.template === 'function') {
+          return item.template(item.value);
+        }
+      });
     }
     return null;
   });
@@ -73,13 +95,27 @@ export const useFormStore = defineStore('form', () => {
     return questions.value[index].isActive;
   };
   const handleNextQuestion = () => {
-    currentLength.value++;
-    activeIndex.value++;
+    if (questions.value?.length === activeIndex.value - 1) {
+      handleSubmit();
+    } else {
+      currentLength.value++;
+      activeIndex.value++;
+    }
   };
-  const handleSubmit = (event) => {
+  const generateMarkdown = () => {
+    let mdContent = ``;
+
+    if (templates.value) {
+      templates.value.forEach((template) => {
+        mdContent += `${template}\n\n`;
+      });
+    }
+
+    return mdContent.trim();
+  };
+  const handleSubmit = () => {
     const downloadLink = document.getElementById('downloadLink');
-    const title = event.target[0].value;
-    const mdContent = `# ${title}`;
+    const mdContent = generateMarkdown();
     const blob = new Blob([mdContent], { type: 'text/markdown' });
     const mdFile = new File([blob], 'README.md');
     const url = URL.createObjectURL(mdFile);
@@ -98,7 +134,9 @@ export const useFormStore = defineStore('form', () => {
     currentLength,
     displayQuestions,
     isFormStarted,
+    isFormReady,
     questions,
+    templates,
     handleSubmit,
     handleNextQuestion,
     isIndexActive,

@@ -26,7 +26,7 @@
 
   /* themes */
   #vue-app {
-    @apply h-screen w-screen;
+    @apply h-screen w-screen overflow-y-auto;
   }
   #vue-app.bsod,
   #vue-app.bsod input {
