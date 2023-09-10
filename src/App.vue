@@ -16,7 +16,7 @@
         </div>
         <Form v-if="formStore.isFormStarted" :questions="content.questions" />
 
-        <div v-if="formStore.isFormReady" class="flex gap-x-[1rem]">
+        <div v-if="formStore.isFormReady" class="flex gap-x-[1rem]" ref="downloadRef">
           <p><span class="animate-pulse">{{ globalStore.indicator }}</span> {{ content.download_text }}</p>
           <BooleanSelector @true="formStore.handleSubmit" @false="reloadPage" />
         </div>
@@ -42,6 +42,7 @@ const formStore = useFormStore();
 // State
 const { isFormReady } = storeToRefs(formStore);
 const isReady = ref(false);
+const downloadRef = ref(null);
 
 // Methods
 const reloadPage = () => {
@@ -49,9 +50,13 @@ const reloadPage = () => {
 }
 const scrollToBottom = () => {
   setTimeout(() => {
-    window.scrollTo(0, document.body.scrollHeight);
-  }, 100)
+    console.log('should scroll');
+    if (downloadRef.value) {
+      downloadRef.value.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 100);
 };
+
 
 // Watchers
 watch(isFormReady, () => {
