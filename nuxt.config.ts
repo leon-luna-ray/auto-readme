@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss"
   ],
   nitro: {
-    preset: 'netlify'
+    prerender: {
+      autoSubfolderIndex: false
+    }
   }
 })
