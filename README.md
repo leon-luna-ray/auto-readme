@@ -15,17 +15,9 @@ This project originally started as a Node.js command line application. I have si
 ![Screenshot](./assets/img/screenshot.png)
 
 ## Technologies
-- Vue.js
-- CSS3
-- HTML5
+- Nuxt.js
 - JavaScript
-- Netlify
 - TailwindCSS
-- Vite.js
-
-## Next-Steps
-
-Further refine and expand the question set.
 
 ## License
 
