@@ -1,4 +1,4 @@
-# Auto_ReadMe
+# ReadMe Generator
 
 ## Description
 
