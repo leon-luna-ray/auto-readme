@@ -25,7 +25,6 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useGlobalStore, useFormStore } from '~/stores/store'
 import { content } from '~/lib/content'
