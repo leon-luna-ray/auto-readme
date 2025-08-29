@@ -8,7 +8,7 @@ This project originally started as a Node.js command line application. I have si
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7104dfd9-1c49-44d3-bf7e-831730ab07c4/deploy-status)](https://app.netlify.com/sites/readme-generator-rldev/deploys)
 
-🚀 [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+🚀 [https://auto-readme.netlify.app/](https://auto-readme.netlify.app/)
 
 ## Image
 
@@ -44,5 +44,5 @@ If you have any questions about the repo, open an issue or contact me directly a
 
 ## Links
 
-- [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+- [https://auto-readme.netlify.app/](https://auto-readme.netlify.app/)
 - [Project Repository](https://github.com/leon-luna-ray/readme-generator)
