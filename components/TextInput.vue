@@ -6,7 +6,7 @@
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import { useFormStore } from '../stores/store'
+import { useFormStore } from '~/stores/store'
 
 const emit = defineEmits(['complete']);
 
