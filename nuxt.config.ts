@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss"
   ],
   nitro: {
-    prerender: {
-      autoSubfolderIndex: false
-    }
+    preset: 'cloudflare-pages'
+
   }
 })
