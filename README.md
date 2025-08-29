@@ -2,7 +2,7 @@
 
 ## Description
 
-A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
+AI powered command-line style application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
 
 This project originally started as a Node.js command line application. I have since refactored it to become a frontend web application for easy access.
 
