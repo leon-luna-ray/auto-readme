@@ -1,48 +1,75 @@
-# ReadMe Generator
+# Nuxt Minimal Starter
 
-## Description
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
+## Setup
 
-This project originally started as a Node.js command line application. I have since refactored it to become a frontend web application for easy access.
+Make sure to install dependencies:
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7104dfd9-1c49-44d3-bf7e-831730ab07c4/deploy-status)](https://app.netlify.com/sites/readme-generator-rldev/deploys)
+```bash
+# npm
+npm install
 
-🚀 [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+# pnpm
+pnpm install
 
-## Image
+# yarn
+yarn install
 
-![Screenshot](./src/assets/img/screenshot.png)
+# bun
+bun install
+```
 
-## Technologies
-- Vue.js
-- CSS3
-- HTML5
-- JavaScript
-- Netlify
-- TailwindCSS
-- Vite.js
+## Development Server
 
-## Next-Steps
+Start the development server on `http://localhost:3000`:
 
-Further refine and expand the question set.
+```bash
+# npm
+npm run dev
 
-## License
+# pnpm
+pnpm dev
 
-This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
+# yarn
+yarn dev
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# bun
+bun run dev
+```
 
-## Contact
+## Production
 
-### Author: Ray Luna
+Build the application for production:
 
-If you have any questions about the repo, open an issue or contact me directly at:
+```bash
+# npm
+npm run build
 
-- E-Mail: leon.luna.ray@gmail.com
-- GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
+# pnpm
+pnpm build
 
-## Links
+# yarn
+yarn build
 
-- [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
-- [Project Repository](https://github.com/leon-luna-ray/readme-generator)
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
