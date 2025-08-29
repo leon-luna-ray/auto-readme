@@ -7,8 +7,8 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss"
   ],
-  nitro: {
-    preset: 'cloudflare-pages'
+  // nitro: {
+  //   preset: 'cloudflare-pages'
 
-  }
+  // }
 })
