@@ -1,75 +1,48 @@
-# Nuxt Minimal Starter
+# Auto_ReadMe
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Description
 
-## Setup
+A command line application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
 
-Make sure to install dependencies:
+This project originally started as a Node.js command line application. I have since refactored it to become a frontend web application for easy access.
 
-```bash
-# npm
-npm install
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7104dfd9-1c49-44d3-bf7e-831730ab07c4/deploy-status)](https://app.netlify.com/sites/readme-generator-rldev/deploys)
 
-# pnpm
-pnpm install
+🚀 [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
 
-# yarn
-yarn install
+## Image
 
-# bun
-bun install
-```
+![Screenshot](./src/assets/img/screenshot.png)
 
-## Development Server
+## Technologies
+- Vue.js
+- CSS3
+- HTML5
+- JavaScript
+- Netlify
+- TailwindCSS
+- Vite.js
 
-Start the development server on `http://localhost:3000`:
+## Next-Steps
 
-```bash
-# npm
-npm run dev
+Further refine and expand the question set.
 
-# pnpm
-pnpm dev
+## License
 
-# yarn
-yarn dev
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) license.
 
-# bun
-bun run dev
-```
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Production
+## Contact
 
-Build the application for production:
+### Author: Ray Luna
 
-```bash
-# npm
-npm run build
+If you have any questions about the repo, open an issue or contact me directly at:
 
-# pnpm
-pnpm build
+- E-Mail: leon.luna.ray@gmail.com
+- GitHub: [leon-luna-ray](https://github.com/leon-luna-ray)
 
-# yarn
-yarn build
+## Links
 
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+- [Project Repository](https://github.com/leon-luna-ray/readme-generator)
