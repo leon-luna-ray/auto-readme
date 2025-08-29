@@ -2,13 +2,11 @@
 
 ## Description
 
-AI powered command-line style application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
+A command-line style application to seamlessly create a new ReadMe file for your projects quickly! This application will ask you all the right questions to generate a professional quality readme from the command line.
 
 This project originally started as a Node.js command line application. I have since refactored it to become a frontend web application for easy access.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7104dfd9-1c49-44d3-bf7e-831730ab07c4/deploy-status)](https://app.netlify.com/sites/readme-generator-rldev/deploys)
-
-🚀 [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
+🚀 [https://auto-readme.pages.dev/](https://auto-readme.pages.dev/)
 
 ## Image
 
@@ -18,6 +16,7 @@ This project originally started as a Node.js command line application. I have si
 - Nuxt.js
 - JavaScript
 - TailwindCSS
+- Cloudflare Pages
 
 ## License
 
@@ -36,5 +35,5 @@ If you have any questions about the repo, open an issue or contact me directly a
 
 ## Links
 
-- [https://readme-generator-rldev.netlify.app/](https://readme-generator-rldev.netlify.app/)
-- [Project Repository](https://github.com/leon-luna-ray/readme-generator)
+- [https://auto-readme.pages.dev/](https://auto-readme.pages.dev/)
+- [Project Repository](https://github.com/leon-luna-ray/auto-readme/)
