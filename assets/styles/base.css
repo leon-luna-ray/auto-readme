@@ -28,18 +28,18 @@
   #vue-app {
     @apply h-screen w-screen overflow-y-auto;
   }
-  #vue-app.bsod,
-  #vue-app.bsod input {
+  .bsod,
+  .bsod input {
     @apply bg-bsod-blue text-white font-tech;
   }
-  #vue-app.hacker,
-  #vue-app.hacker input {
+  .hacker,
+  .hacker input {
     @apply bg-black text-hacker-green font-vt text-[1.5rem];
   }
-  #vue-app.hacker h1 {
+  .hacker h1 {
     @apply text-[5rem];
   }
-  #vue-app.hacker * {
+  .hacker * {
     @apply text-[1.5rem];
   }
 }
