@@ -26,13 +26,13 @@
 </template>
 <script setup>
 import { storeToRefs } from 'pinia';
-import { useGlobalStore, useFormStore } from './stores/store'
-import { content } from './lib/content'
+import { useGlobalStore, useFormStore } from '~/stores/store'
+import { content } from '~/lib/content'
 
-import BooleanSelector from './components/BooleanSelector.vue'
-import Form from './components/Form.vue'
-import ThemeControls from './components/ThemeControls.vue'
-import TerminalText from './components/TerminalText.vue'
+import BooleanSelector from '~/components/BooleanSelector.vue'
+import Form from '~/components/Form.vue'
+import ThemeControls from '~/components/ThemeControls.vue'
+import TerminalText from '~/components/TerminalText.vue'
 
 // Store
 const globalStore = useGlobalStore();

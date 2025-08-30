@@ -8,9 +8,8 @@
 </template>
 
 <script setup>
-import { useFormStore } from '../stores/store'
-import BooleanSelector from './BooleanSelector.vue';
-import TextInput from './TextInput.vue'
+import { useFormStore } from '~/stores/store'
+import TextInput from '~/components/TextInput.vue'
 
 const props = defineProps({
     questions: {
@@ -20,7 +19,6 @@ const props = defineProps({
 })
 
 const mapTypeComponents = {
-    // boolean: BooleanSelector,
     text: TextInput,
 };
 

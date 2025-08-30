@@ -1,12 +1,13 @@
 <template>
     <div class="text-input flex-col-1">
         <label for="title">{{ data.prompt }}</label>
-        <input type="text" for="title" class="outline-none" ref="inputRef" :disabled="formStore.isFormReady" @keyup.prevent="e => handleKeyup(e)">
+        <input type="text" for="title" class="outline-none" ref="inputRef" :disabled="formStore.isFormReady"
+            @keyup.prevent="e => handleKeyup(e)">
     </div>
 </template>
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import { useFormStore } from '../stores/store'
+import { ref, onMounted } from 'vue';
+import { useFormStore } from '~/stores/store'
 
 const emit = defineEmits(['complete']);
 
@@ -42,27 +43,13 @@ const handleKeyup = (event) => {
     }
 };
 const addEventListeners = () => {
-    // document.addEventListener('click', preventClick);
-    // document.addEventListener('keyup', handleKeyup);
-    if (inputRef.value) {
-        inputRef.value.focus();
-    }
+    if (!inputRef.value) return;
+    inputRef.value.focus();
 }
-const removeEventListeners = () => {
-    document.removeEventListener('click', preventClick);
-    document.removeEventListener('keyup', handleKeyup);
-}
-// Watchers
-// watch(() => formStore.questions[props.index]?.value, (newValue) => {
-//     if (newValue) {
-//         document.removeEventListener('keyup', handleKeyup);
-//     }
-// })
+
+
 // Lifecycle
 onMounted(() => {
     addEventListeners();
-});
-onBeforeUnmount(() => {
-    // removeEventListeners();
 });
 </script>
