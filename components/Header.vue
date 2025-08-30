@@ -2,7 +2,7 @@
     <header>
         <div class="container flex justify-between items-center">
             <h1>{{ content.title }}</h1>
-            <ThemeControls />
+            <!-- <ThemeControls /> -->
         </div>
     </header>
 </template>

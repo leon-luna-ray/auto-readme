@@ -25,11 +25,7 @@ export const useGlobalStore = defineStore('global', () => {
 
   // Methods
   const setTheme = (value) => {
-
-    if ((!value || value === 'basic') && document.body.classList.contains(theme.value)) {
-      document.body.classList.remove(theme.value);
-    }
-    document.body.classList.add(value);
+    theme.value = value;
   };
 
   watch(theme, (newTheme) => {
@@ -38,8 +34,8 @@ export const useGlobalStore = defineStore('global', () => {
 
   return {
     indicator,
+    theme,
     // localTimeOfDay,
-    // theme,
     setTheme,
   };
 });
