@@ -1,4 +1,20 @@
-export const content = {
+// Types
+interface Question {
+  type: string;
+  name: string;
+  prompt: string;
+  template: string;
+}
+
+interface Content {
+  title: string;
+  intro: string;
+  ready_text: string;
+  download_text: string;
+  questions: Question[];
+}
+
+export const content: Content = {
   title: 'Auto-ReadMe',
   intro: 'This application will automatically generate a ReadMe.md file for use in your development projects. Simply answer a few questions about your project and Readme Generator will create your .md file for you!',
   ready_text: 'Are you ready to start?',
@@ -8,13 +24,13 @@ export const content = {
       type: 'text',
       name: 'title',
       prompt: 'What is the project title?',
-      template: '# {{value}}',  // Use a string template instead of function
+      template: '# {{value}}',
     },
     {
       type: 'text',
       name: 'description',
       prompt: 'A short description of the project',
-      template: '\n## Description\n{{value}}\n',  // String template
+      template: '\n## Description\n{{value}}\n',
     },
     {
       type: 'text',
