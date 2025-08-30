@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
 
 // Global
@@ -25,13 +25,21 @@ export const useGlobalStore = defineStore('global', () => {
 
   // Methods
   const setTheme = (value) => {
-    theme.value = value;
+
+    if ((!value || value === 'basic') && document.body.classList.contains(theme.value)) {
+      document.body.classList.remove(theme.value);
+    }
+    document.body.classList.add(value);
   };
+
+  watch(theme, (newTheme) => {
+    console.log('Theme changed to:', newTheme);
+  });
 
   return {
     indicator,
     // localTimeOfDay,
-    theme,
+    // theme,
     setTheme,
   };
 });
