@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/tailwindcss"
   ],
-  // runtimeConfig: {
-  //   SANITY_API_TOKEN: process.env.SANITY_API_TOKEN,
-  // }
+  runtimeConfig: {
+    GOOGLE_GEMINI_API_KEY: process.env.GOOGLE_GEMINI_API_KEY,
+  }
 })
