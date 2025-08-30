@@ -1,49 +1,55 @@
 import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
 
-// Global
+// Types
+interface Question {
+  type: string;
+  name: string;
+  prompt: string;
+  template: string | ((value: any) => string);
+  value?: any;
+  isActive?: boolean;
+}
+
+// Global Store
 export const useGlobalStore = defineStore('global', () => {
   // State
   const indicator = '>>>>>> ';
-  const theme = ref('hacker');
+  const theme = ref<string>('hacker');
 
   // Methods
-  const setTheme = (value) => {
+  const setTheme = (value: string) => {
     theme.value = value;
   };
 
-  watch(theme, (newTheme) => {
+  watch(theme, (newTheme: string) => {
     console.log('Theme changed to:', newTheme);
   });
 
   return {
     indicator,
     theme,
-    // localTimeOfDay,
     setTheme,
   };
 });
 
-// Form
+// Form Store
 export const useFormStore = defineStore('form', () => {
   // State
-  const isFormStarted = ref(false);
-  const questions = ref([]);
-  const currentLength = ref(1);
-  const activeIndex = ref(0);
+  const isFormStarted = ref<boolean>(false);
+  const questions = ref<Question[]>([]);
+  const currentLength = ref<number>(1);
+  const activeIndex = ref<number>(0);
 
   // Computed
-  const displayQuestions = computed(() => {
+  const displayQuestions = computed<Question[] | null>(() => {
     if (questions.value.length) {
       return questions.value.slice(0, currentLength.value);
     }
     return null;
   });
-  // const projectTitle = computed(() => {
-  //   const foundObject = questions.value.find((obj) => obj.name === 'title');
-  //   return foundObject ? foundObject.value : 'Title';
-  // });
-  const isFormReady = computed(() => {
+
+  const isFormReady = computed<boolean>(() => {
     if (
       questions.value?.length &&
       activeIndex.value === currentLength.value - 1
@@ -53,13 +59,15 @@ export const useFormStore = defineStore('form', () => {
     }
     return false;
   });
-  const templates = computed(() => {
+
+  const templates = computed<string[] | null>(() => {
     if (isFormReady.value) {
       return questions.value.map((item) => {
         if (typeof item.template === 'function') {
           return item.template(item.value);
         }
-      });
+        return '';
+      }).filter(Boolean);
     }
     return null;
   });
@@ -68,20 +76,24 @@ export const useFormStore = defineStore('form', () => {
   const setIsFormStarted = () => {
     isFormStarted.value = true;
   };
-  const setQuestions = (newQuestions) => {
+
+  const setQuestions = (newQuestions: Question[]) => {
     questions.value = newQuestions;
   };
-  const setIsIndexActive = (index, isActive) => {
+
+  const setIsIndexActive = (index: number, isActive: boolean) => {
     questions.value[index].isActive = isActive;
   };
-  const setCurrentLength = (length) => {
+
+  const setCurrentLength = (length: number) => {
     currentLength.value = length;
   };
 
   // Methods
-  const isIndexActive = (index) => {
-    return questions.value[index].isActive;
+  const isIndexActive = (index: number): boolean => {
+    return questions.value[index].isActive || false;
   };
+
   const handleNextQuestion = () => {
     if (questions.value?.length === activeIndex.value - 1) {
       handleSubmit();
@@ -90,8 +102,9 @@ export const useFormStore = defineStore('form', () => {
       activeIndex.value++;
     }
   };
-  const generateMarkdown = () => {
-    let mdContent = ``;
+
+  const generateMarkdown = (): string => {
+    let mdContent = '';
 
     if (templates.value) {
       templates.value.forEach((template) => {
@@ -101,8 +114,9 @@ export const useFormStore = defineStore('form', () => {
 
     return mdContent.trim();
   };
+
   const handleSubmit = () => {
-    const downloadLink = document.getElementById('downloadLink');
+    const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
     const mdContent = generateMarkdown();
     const blob = new Blob([mdContent], { type: 'text/markdown' });
     const mdFile = new File([blob], 'README.md');

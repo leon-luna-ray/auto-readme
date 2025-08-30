@@ -1,4 +1,4 @@
-# Auto ReadMe
+# Auto-ReadMe
 
 ## Description
 
@@ -13,10 +13,13 @@ This project originally started as a Node.js command line application. I have si
 ![Screenshot](./assets/img/screenshot.png)
 
 ## Technologies
-- Nuxt.js
 - JavaScript
+- TypeScript
+- Nuxt.js
+- Vue.js
 - TailwindCSS
 - Cloudflare Pages
+- Google AI Sutdio
 
 ## License
 
