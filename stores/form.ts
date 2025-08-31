@@ -9,6 +9,7 @@ export const useFormStore = defineStore('form', () => {
   const questions = ref<Question[]>([]);
   const currentLength = ref<number>(1);
   const activeIndex = ref<number>(0);
+  const responseData = ref<string | null>(null);
 
   // Computed
   const displayQuestions = computed<Question[] | null>(() => {
@@ -86,6 +87,7 @@ export const useFormStore = defineStore('form', () => {
 
   const handleSubmit = async () => {
     try {
+      console.log('try form submit')
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {
@@ -95,7 +97,9 @@ export const useFormStore = defineStore('form', () => {
           prompt: 'Hi how are you',
         }),
       });
+
       const data = await response.json();
+
       if (data.success) {
         console.log('Form submitted successfully:', data.response);
       } else {
