@@ -1,39 +1,7 @@
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
+import type { Question } from '~/interfaces/Quteston';
 
-// Types
-interface Question {
-  type: string;
-  name: string;
-  prompt: string;
-  template: string | ((value: any) => string);
-  value?: any;
-  isActive?: boolean;
-}
-
-// Global Store
-export const useGlobalStore = defineStore('global', () => {
-  // State
-  const indicator = '>>>>>> ';
-  const theme = ref<string>('hacker');
-
-  // Methods
-  const setTheme = (value: string) => {
-    theme.value = value;
-  };
-
-  watch(theme, (newTheme: string) => {
-    console.log('Theme changed to:', newTheme);
-  });
-
-  return {
-    indicator,
-    theme,
-    setTheme,
-  };
-});
-
-// Form Store
 export const useFormStore = defineStore('form', () => {
   // State
   const isFormStarted = ref<boolean>(false);
@@ -55,7 +23,7 @@ export const useFormStore = defineStore('form', () => {
       activeIndex.value === currentLength.value - 1
     ) {
       const lastQuestion = questions.value[questions.value.length - 1];
-      return lastQuestion.hasOwnProperty('value');
+      return lastQuestion && typeof lastQuestion === 'object' && 'value' in lastQuestion;
     }
     return false;
   });
@@ -115,20 +83,21 @@ export const useFormStore = defineStore('form', () => {
     return mdContent.trim();
   };
 
-  const handleSubmit = () => {
-    const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
-    const mdContent = generateMarkdown();
-    const blob = new Blob([mdContent], { type: 'text/markdown' });
-    const mdFile = new File([blob], 'README.md');
-    const url = URL.createObjectURL(mdFile);
+  const handleSubmit = async () => {
+    console.log('Form submitted. Generated Markdown:');
+    // const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
+    // const mdContent = generateMarkdown();
+    // const blob = new Blob([mdContent], { type: 'text/markdown' });
+    // const mdFile = new File([blob], 'README.md');
+    // const url = URL.createObjectURL(mdFile);
 
-    downloadLink.href = url;
-    downloadLink.download = 'README.md';
+    // downloadLink.href = url;
+    // downloadLink.download = 'README.md';
 
-    setTimeout(() => {
-      downloadLink.click();
-      URL.revokeObjectURL(url);
-    }, 200);
+    // setTimeout(() => {
+    //   downloadLink.click();
+    //   URL.revokeObjectURL(url);
+    // }, 200);
   };
 
   return {

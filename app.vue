@@ -6,13 +6,13 @@
 
 <script setup>
 import { useHead } from '#app'
-import { useGlobalStore } from '~/stores/store'
+import { useUiStore } from '~/stores/ui'
 
-const globalStore = useGlobalStore()
+const ui = useUiStore()
 
 useHead({
   bodyAttrs: {
-    class: globalStore.theme
+    class: ui.theme
   }
 })
 </script>

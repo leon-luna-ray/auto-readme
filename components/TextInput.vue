@@ -7,7 +7,7 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useFormStore } from '~/stores/store'
+import { useFormStore } from '~/stores/form'
 
 const emit = defineEmits(['complete']);
 

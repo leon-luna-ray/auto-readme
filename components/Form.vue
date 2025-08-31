@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { useFormStore } from '~/stores/store'
+import { useFormStore } from '~/stores/form'
 import TextInput from '~/components/TextInput.vue'
 
 const props = defineProps({
