@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
 const props = defineProps({
@@ -29,11 +29,12 @@ const props = defineProps({
 })
 
 // State
-const lines = ref([]);
+import type { Ref } from 'vue';
+const lines: Ref<string[]> = ref([]);
 const lineVisible = ref(Array(lines.value?.length).fill(false));
 
 // Methods
-const breakIntroIntoLines = (intro) => {
+const breakIntroIntoLines = (intro: string) => {
     const words = intro.split(' ');
     const lines = [];
     let currentLine = '';

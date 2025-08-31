@@ -5,7 +5,7 @@
             @keyup.prevent="e => handleKeyup(e)">
     </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useFormStore } from '~/stores/form'
 
@@ -26,21 +26,23 @@ const props = defineProps({
 const formStore = useFormStore();
 
 // State
-const inputRef = ref(null);
+const inputRef = ref < HTMLInputElement | null > (null);
 
 // Methods
-const preventClick = (event) => {
-    if (inputRef.value && !inputRef.value.contains(event.target)) {
+const preventClick = (event: MouseEvent) => {
+    if (inputRef.value && !inputRef.value.contains(event.target as Node)) {
         event.stopPropagation();
         inputRef.value.focus();
     }
 };
-const handleKeyup = (event) => {
-    if (event.key === 'Enter') {
-        event.preventDefault();
+const handleKeyup = (event: KeyboardEvent) => {
+    if (event.key !== 'Enter') return;
+
+    event.preventDefault();
+    if (inputRef.value) {
         formStore.questions[props.index].value = inputRef.value.value;
-        formStore.handleNextQuestion();
     }
+    formStore.handleNextQuestion();
 };
 const addEventListeners = () => {
     if (!inputRef.value) return;

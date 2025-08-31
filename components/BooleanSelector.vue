@@ -8,7 +8,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useUiStore } from '~~/stores/ui';
 
 // Emits
@@ -43,7 +43,7 @@ const handleFalse = () => {
         emit('false')
     }
 }
-const handleKeyup = (event) => {
+const handleKeyup = (event: KeyboardEvent) => {
     if (event.key === 'y' || event.key === 'Y') {
         handleTrue();
     } else if (event.key === 'n' || event.key === 'N') {
