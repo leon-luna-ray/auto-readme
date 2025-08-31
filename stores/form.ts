@@ -85,23 +85,27 @@ export const useFormStore = defineStore('form', () => {
   };
 
   const handleSubmit = async () => {
-    console.log('Form submitted:');
-    const response = await fetch('/api/form-submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        prompt: 'Hi how are you',
-      }),
-    });
-
-    const data = await response.json();
-    if (data.success) {
-      console.log('Form submitted successfully:', data.response);
-    } else {
-      console.error('Form submission failed:', data.error);
+    try {
+      console.log('Try Form submitted:');
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: 'Hi how are you',
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        console.log('Form submitted successfully:', data.response);
+      } else {
+        console.error('Form submission failed:', data.error);
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting form:', error);
     }
+
     // const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
     // const mdContent = generateMarkdown();
     // const blob = new Blob([mdContent], { type: 'text/markdown' });
