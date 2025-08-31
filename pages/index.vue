@@ -45,13 +45,10 @@ const downloadRef = ref(null);
 const reloadPage = () => {
   location.reload()
 }
-const scrollToBottom = () => {
-  setTimeout(() => {
-    console.log('should scroll');
-    if (downloadRef.value) {
-      downloadRef.value.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, 100);
+const scrollToBottom = async () => {
+  if (!downloadRef.value) return;
+  await new Promise(resolve => setTimeout(resolve, 100));
+  downloadRef.value.scrollIntoView({ behavior: 'smooth' });
 };
 
 
