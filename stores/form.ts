@@ -30,16 +30,12 @@ export const useFormStore = defineStore('form', () => {
     return false;
   });
 
-  const templates = computed<string[] | null>(() => {
-    if (isFormReady.value) {
-      return questions.value.map((item) => {
-        if (typeof item.template === 'function') {
-          return item.template(item.value);
-        }
-        return '';
-      }).filter(Boolean);
-    }
-    return null;
+  const templates = computed<string[]>(() => {
+    if (!isFormReady.value) return [];
+    return questions.value.map((item) => {
+      if (typeof item.template !== 'function') return '';
+      return item.template(item.value);
+    }).filter(Boolean);
   });
 
   // Setters
@@ -76,7 +72,7 @@ export const useFormStore = defineStore('form', () => {
   const generateMarkdown = (): string => {
     let mdContent = '';
 
-    if (templates.value) {
+    if (templates.value?.length) {
       templates.value.forEach((template) => {
         mdContent += `${template}\n\n`;
       });
