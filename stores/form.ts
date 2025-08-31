@@ -86,7 +86,6 @@ export const useFormStore = defineStore('form', () => {
 
   const handleSubmit = async () => {
     try {
-      console.log('Try Form submitted:');
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: {

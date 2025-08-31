@@ -1,45 +1,21 @@
 import { GoogleGenAI, Type } from "@google/genai";
-const config = useRuntimeConfig();
 
 const ai = new GoogleGenAI({});
 
 export default defineEventHandler(async (event) => {
-  console.log('Received request for content generation');
   const body = await readBody(event);
   const prompt = body.prompt || 'Hello, world!';
-  const config = {
-    model: "gemini-2.5-flash",
-    config: {
-      responseMimeType: "application/json",
-      responseSchema: {
-        type: Type.ARRAY,
-        items: {
-          type: Type.OBJECT,
-          properties: {
-            recipeName: {
-              type: Type.STRING,
-            },
-            ingredients: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.STRING,
-              },
-            },
-          },
-          propertyOrdering: ["recipeName", "ingredients"],
-        },
-      },
-    },
+
+  const request = {
+      model: "gemini-2.5-flash",
+      contents: "Explain how AI works in a few words",
   };
 
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
-      contents: "Explain how AI works in a few words",
-    });
-    console.log(response);
-
-    return { success: true, response };
+    const response = await ai.models.generateContent(request);
+    const text = response.choices[0].text;
+    console.log('Generated content:', text);
+    return { success: true, response: text };
   } catch (error) {
     const errorMessage = typeof error === 'object' && error !== null && 'message' in error
       ? (error as { message: string }).message
