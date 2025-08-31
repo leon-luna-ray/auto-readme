@@ -4,7 +4,7 @@
   <Footer />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useHead } from '#app'
 import { useUiStore } from '~/stores/ui'
 

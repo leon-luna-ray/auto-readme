@@ -5,7 +5,7 @@
         <div class="theme-btn bg-white border border-black" @click="ui.setTheme('')"></div>
       </div>
 </template>
-<script setup>
+<script setup lang="ts">
 
 import { useUiStore } from '~/stores/ui'
 
