@@ -10,12 +10,12 @@
             <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
           </div>
         </div>
-        <Form v-if="formStore.isFormStarted" :questions="content.questions" />
+        <!-- <Form v-if="formStore.isFormStarted" :questions="content.questions" />
 
         <div v-if="formStore.isFormReady" class="flex gap-x-[1rem]" ref="downloadRef">
           <p><span class="animate-pulse">{{ ui.indicator }}</span> {{ content.download_text }}</p>
           <BooleanSelector @true="formStore.handleSubmit" @false="reloadPage" />
-        </div>
+        </div> -->
       </main>
     </div>
   </div>

@@ -1,5 +1,6 @@
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
+
 import type { Question } from '~/interfaces/Quteston';
 
 export const useFormStore = defineStore('form', () => {
@@ -84,7 +85,23 @@ export const useFormStore = defineStore('form', () => {
   };
 
   const handleSubmit = async () => {
-    console.log('Form submitted. Generated Markdown:');
+    console.log('Form submitted:');
+    const response = await fetch('/api/form-submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        prompt: 'Hi how are you',
+      }),
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      console.log('Form submitted successfully:', data.response);
+    } else {
+      console.error('Form submission failed:', data.error);
+    }
     // const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
     // const mdContent = generateMarkdown();
     // const blob = new Blob([mdContent], { type: 'text/markdown' });
@@ -99,6 +116,11 @@ export const useFormStore = defineStore('form', () => {
     //   URL.revokeObjectURL(url);
     // }, 200);
   };
+
+  watch(isFormStarted, (newValue) => {
+    if (!newValue) return;
+    handleSubmit();
+  });
 
   return {
     activeIndex,
