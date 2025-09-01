@@ -89,9 +89,10 @@ export const useFormStore = defineStore('form', () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          prompt: 'Hi how are you',
-        }),
+        body: JSON.stringify(questions.value.reduce((acc, question) => {
+          acc[question.name] = question.value;
+          return acc;
+        }, {} as Record<string, string>)),
       });
 
       const data = await response.json();
@@ -120,10 +121,10 @@ export const useFormStore = defineStore('form', () => {
     // }, 200);
   };
 
-  watch(isFormStarted, (newValue) => {
-    if (!newValue) return;
-    handleSubmit();
-  });
+  // watch(isFormStarted, (newValue) => {
+  //   if (!newValue) return;
+  //   handleSubmit();
+  // });
 
   return {
     activeIndex,

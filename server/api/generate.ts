@@ -5,7 +5,20 @@ const ai = new GoogleGenAI({});
 export default defineEventHandler(async (event) => {
   console.log('Received request for content generation');
   const body = await readBody(event);
-  const prompt = body.prompt || 'Hello, world!';
+  const prompt = `
+  Generate a professional README.md file in Markdown format using the following details:
+
+  Project Title: ${body.title}
+  Description: ${body.description}
+  Technologies: ${body.technologies}
+  App URL: ${body.appUrl}
+  Repo URL: ${body.repoUrl}
+  Image URL: ${body.imageUrl}
+
+  Structure the README with clear headings such as 'Description', 'Technologies', 'Installation', 'Usage', 'Contributing', and 'License' based on the user's input.
+  If provided scan the repository URL for additional information.
+  `;
+
 
   const request = {
     model: "gemini-2.5-flash",
