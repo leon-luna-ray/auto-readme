@@ -15,6 +15,6 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss"
   ],
   runtimeConfig: {
-    GOOGLE_GEMINI_API_KEY: process.env.GOOGLE_GEMINI_API_KEY,
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY,
   }
 })

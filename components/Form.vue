@@ -7,8 +7,9 @@
     <a id="downloadLink" style="display: none">Download</a>
 </template>
 
-<script setup>
-import { useFormStore } from '~/stores/store'
+<script setup lang="ts">
+import { useFormStore } from '~/stores/form'
+
 import TextInput from '~/components/TextInput.vue'
 
 const props = defineProps({
@@ -18,11 +19,11 @@ const props = defineProps({
     }
 })
 
-const mapTypeComponents = {
+const mapTypeComponents: Record<string, any> = {
     text: TextInput,
 };
 
-const isVisible = (index) => {
+const isVisible = (index: number) => {
     if (index === 0) return true
     return formStore.questions[index - 1]?.value !== undefined;
 }

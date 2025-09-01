@@ -1,45 +1,15 @@
 import { ref, computed, watch } from 'vue';
 import { defineStore } from 'pinia';
 
-// Types
-interface Question {
-  type: string;
-  name: string;
-  prompt: string;
-  template: string | ((value: any) => string);
-  value?: any;
-  isActive?: boolean;
-}
+import type { Question } from '~/interfaces/Quteston';
 
-// Global Store
-export const useGlobalStore = defineStore('global', () => {
-  // State
-  const indicator = '>>>>>> ';
-  const theme = ref<string>('hacker');
-
-  // Methods
-  const setTheme = (value: string) => {
-    theme.value = value;
-  };
-
-  watch(theme, (newTheme: string) => {
-    console.log('Theme changed to:', newTheme);
-  });
-
-  return {
-    indicator,
-    theme,
-    setTheme,
-  };
-});
-
-// Form Store
 export const useFormStore = defineStore('form', () => {
   // State
   const isFormStarted = ref<boolean>(false);
   const questions = ref<Question[]>([]);
   const currentLength = ref<number>(1);
   const activeIndex = ref<number>(0);
+  const responseData = ref<string | null>(null);
 
   // Computed
   const displayQuestions = computed<Question[] | null>(() => {
@@ -55,21 +25,17 @@ export const useFormStore = defineStore('form', () => {
       activeIndex.value === currentLength.value - 1
     ) {
       const lastQuestion = questions.value[questions.value.length - 1];
-      return lastQuestion.hasOwnProperty('value');
+      return lastQuestion && typeof lastQuestion === 'object' && 'value' in lastQuestion;
     }
     return false;
   });
 
-  const templates = computed<string[] | null>(() => {
-    if (isFormReady.value) {
-      return questions.value.map((item) => {
-        if (typeof item.template === 'function') {
-          return item.template(item.value);
-        }
-        return '';
-      }).filter(Boolean);
-    }
-    return null;
+  const templates = computed<string[]>(() => {
+    if (!isFormReady.value) return [];
+    return questions.value.map((item) => {
+      if (typeof item.template !== 'function') return '';
+      return item.template(item.value);
+    }).filter(Boolean);
   });
 
   // Setters
@@ -106,7 +72,7 @@ export const useFormStore = defineStore('form', () => {
   const generateMarkdown = (): string => {
     let mdContent = '';
 
-    if (templates.value) {
+    if (templates.value?.length) {
       templates.value.forEach((template) => {
         mdContent += `${template}\n\n`;
       });
@@ -115,21 +81,46 @@ export const useFormStore = defineStore('form', () => {
     return mdContent.trim();
   };
 
-  const handleSubmit = () => {
-    const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
-    const mdContent = generateMarkdown();
-    const blob = new Blob([mdContent], { type: 'text/markdown' });
-    const mdFile = new File([blob], 'README.md');
-    const url = URL.createObjectURL(mdFile);
+  const handleSubmit = async () => {
+    try {
+      console.log('try form submit')
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(questions.value.reduce((acc, question) => {
+          acc[question.name] = question.value;
+          return acc;
+        }, {} as Record<string, string>)),
+      });
 
-    downloadLink.href = url;
-    downloadLink.download = 'README.md';
+      const data = await response.json();
 
-    setTimeout(() => {
-      downloadLink.click();
-      URL.revokeObjectURL(url);
-    }, 200);
+      if (data.success) {
+        console.log('Form submitted successfully:', data.response);
+        // Auto-download the markdown file
+        const blob = new Blob([data.response], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'README.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } else {
+        console.error('Form submission failed:', data.error);
+      }
+    } catch (error) {
+      console.error('Error occurred while submitting form:', error);
+    }
   };
+
+  // watch(isFormStarted, (newValue) => {
+  //   if (!newValue) return;
+  //   handleSubmit();
+  // });
 
   return {
     activeIndex,

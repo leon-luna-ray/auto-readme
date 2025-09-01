@@ -8,14 +8,14 @@
     </div>
 </template>
 
-<script setup>
-import { useGlobalStore } from '~~/stores/store';
+<script setup lang="ts">
+import { useUiStore } from '~~/stores/ui';
 
 // Emits
 const emit = defineEmits(['true', 'false']);
 
 // Store
-const globalStore = useGlobalStore();
+const ui = useUiStore();
 
 // State
 const isComplete = ref(false);
@@ -25,9 +25,9 @@ const isClickable = computed(() => ({
     'hover:cursor-pointer': !isComplete.value,
 }))
 const hoverStateColors = computed(() => ({
-    'hover:bg-hacker-green hover:text-black hover:p-1': !isComplete.value && globalStore.theme === 'hacker',
-    'hover:bg-white hover:text-bsod-blue hover:p-1': !isComplete.value && globalStore.theme === 'bsod',
-    'hover:bg-black hover:text-white hover:p-1': !isComplete.value && globalStore.theme === '',
+    'hover:bg-hacker-green hover:text-black hover:p-1': !isComplete.value && ui.theme === 'hacker',
+    'hover:bg-white hover:text-bsod-blue hover:p-1': !isComplete.value && ui.theme === 'bsod',
+    'hover:bg-black hover:text-white hover:p-1': !isComplete.value && ui.theme === '',
 }))
 
 // Methods
@@ -43,7 +43,7 @@ const handleFalse = () => {
         emit('false')
     }
 }
-const handleKeyup = (event) => {
+const handleKeyup = (event: KeyboardEvent) => {
     if (event.key === 'y' || event.key === 'Y') {
         handleTrue();
     } else if (event.key === 'n' || event.key === 'N') {
