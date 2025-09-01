@@ -1,18 +1,4 @@
-// Types
-interface Question {
-  type: string;
-  name: string;
-  prompt: string;
-  template: string;
-}
-
-interface Content {
-  title: string;
-  intro: string;
-  ready_text: string;
-  download_text: string;
-  questions: Question[];
-}
+import type { Content } from '@/interfaces/Content';
 
 export const content: Content = {
   title: 'Auto-ReadMe',
@@ -24,26 +10,31 @@ export const content: Content = {
       type: 'text',
       name: 'title',
       prompt: 'What is the project title?',
-      template: '# {{value}}',
     },
     {
       type: 'text',
       name: 'description',
       prompt: 'A short description of the project',
-      template: '\n## Description\n{{value}}\n',
+    },
+    {
+      type: 'text',
+      name: 'technologies',
+      prompt: 'What technologies does your project use?',
     },
     {
       type: 'text',
       name: 'appUrl',
       prompt: 'What is the project URL?',
-      template: '\n## Link\n{{value}}\n',
+    },
+    {
+      type: 'text',
+      name: 'repoUrl',
+      prompt: 'What is the project repository URL?',
     },
     {
       type: 'text',
       name: 'imageUrl',
       prompt: 'What is the project image URL or file path?',
-      template: '\n# Image\n![Screenshot]({{value}})\n',
     },
-    // ... other questions
   ],
 };
