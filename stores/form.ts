@@ -99,26 +99,22 @@ export const useFormStore = defineStore('form', () => {
 
       if (data.success) {
         console.log('Form submitted successfully:', data.response);
+        // Auto-download the markdown file
+        const blob = new Blob([data.response], { type: 'text/markdown' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'README.md';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
       } else {
         console.error('Form submission failed:', data.error);
       }
     } catch (error) {
       console.error('Error occurred while submitting form:', error);
     }
-
-    // const downloadLink = document.getElementById('downloadLink') as HTMLAnchorElement;
-    // const mdContent = generateMarkdown();
-    // const blob = new Blob([mdContent], { type: 'text/markdown' });
-    // const mdFile = new File([blob], 'README.md');
-    // const url = URL.createObjectURL(mdFile);
-
-    // downloadLink.href = url;
-    // downloadLink.download = 'README.md';
-
-    // setTimeout(() => {
-    //   downloadLink.click();
-    //   URL.revokeObjectURL(url);
-    // }, 200);
   };
 
   // watch(isFormStarted, (newValue) => {
