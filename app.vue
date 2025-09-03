@@ -5,11 +5,13 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 const ui = useUiStore()
+const { theme } = storeToRefs(ui)
 
 useHead({
   bodyAttrs: {
-    class: ui.theme
+    class: theme || 'hacker'
   },
   title: 'Auto-README',
   meta: [
