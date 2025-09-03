@@ -1,5 +1,5 @@
 <template>
-    <form v-if="formStore.displayQuestions?.length" class="flex flex-col gap-y-[1rem]" @submit.prevent="console.log('submit')">
+    <form v-if="formStore.displayQuestions?.length" class="flex flex-col gap-y-4" @submit.prevent="console.log('submit')">
         <component v-for="(question, index) in formStore.displayQuestions" :is="mapTypeComponents[question.type]" :data="question"
             :index="index" :is-visible="isVisible(index)">
         </component>

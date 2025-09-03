@@ -1,7 +1,3 @@
-@tailwind components;
-
-@layer components {
-    .theme-btn {
-        @apply h-[15px] w-[15px] rounded-full hover:cursor-pointer;
-    }
+@utility theme-btn {
+  @apply h-[15px] w-[15px] rounded-full hover:cursor-pointer;
 }
