@@ -23,7 +23,6 @@ This project leverages a powerful stack of modern web development and AI technol
 *   **[Tailwind CSS](https://tailwindcss.com/)** - A utility-first CSS framework for rapidly building custom designs.
 *   **[Vue.js](https://vuejs.org/)** - The progressive JavaScript framework powering the frontend UI.
 *   **[Cloudflare Pages](https://pages.cloudflare.com/)** - For lightning-fast global deployment and serverless functions.
-*   **Serverless Functions** - Used for handling API requests to the Google AI Studio, ensuring secure and scalable operations.
 *   **[Google AI Studio](https://ai.google.dev/)** - The core AI engine for generating README content.
 
 ## Installation
