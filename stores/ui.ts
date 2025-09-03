@@ -1,4 +1,6 @@
 import { ref } from 'vue';
+import { useStorage } from '@vueuse/core';
+
 import { defineStore } from 'pinia';
 
 // Global Store
