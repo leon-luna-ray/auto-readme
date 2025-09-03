@@ -12,7 +12,7 @@ Initially conceived as a Node.js CLI tool, Auto-README has been refactored into 
 
 ## Screenshot
 
-![Auto-README Screenshot](./assets/img/screenshot.png)
+![Auto-README Screenshot](./assets/img/screen-2.png)
 
 ## Technologies
 

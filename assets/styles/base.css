@@ -1,62 +1,46 @@
-@import 'tailwindcss/theme' layer(theme);
-
-@import 'tailwindcss/preflight' layer(base);
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+body {
+  @apply font-anonymous text-[1.25rem] underline-offset-4;
 }
 
-@layer base {
-  body {
-    @apply font-anonymous text-[1.25rem] underline-offset-4;
-  }
-  h1,
-  .h1 {
-    @apply text-[4rem] font-bold;
-  }
-  h2,
-  .h2 {
-    @apply text-[3rem] font-bold;
-  }
-  h3,
-  .h3 {
-    @apply text-[2rem] font-bold;
-  }
-  h4,
-  .h4 {
-    @apply text-[1rem] font-bold;
-  }
-  input {
-    @apply px-0;
-  }
+h1,
+.h1 {
+  @apply text-[4rem] font-bold;
+}
 
-  /* themes */
-  .bsod,
-  .bsod input {
-    @apply bg-bsod-blue text-white font-tech;
-  }
-  .hacker,
-  .hacker input {
-    @apply bg-black text-hacker-green font-vt text-[1.5rem];
-  }
-  .hacker h1 {
-    @apply text-[5rem];
-  }
-  .hacker * {
-    @apply text-[1.5rem];
-  }
+h2,
+.h2 {
+  @apply text-[3rem] font-bold;
+}
+
+h3,
+.h3 {
+  @apply text-[2rem] font-bold;
+}
+
+h4,
+.h4 {
+  @apply text-[1rem] font-bold;
+}
+
+input {
+  @apply px-0;
+}
+
+/* themes */
+.bsod,
+.bsod input {
+  @apply bg-bsod-blue text-white font-tech;
+}
+
+.hacker,
+.hacker input {
+  @apply bg-black text-hacker-green font-vt text-[1.5rem];
+}
+
+.hacker h1 {
+  @apply text-[5rem];
+}
+
+.hacker * {
+  @apply text-[1.5rem];
 }
