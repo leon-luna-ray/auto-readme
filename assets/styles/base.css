@@ -28,10 +28,10 @@ input {
 
 /* themes */
 body.basic {
-  @apply bg-white text-black font-sans;
+  @apply bg-white text-black;
 }
 body.basic input {
-  @apply bg-white text-black font-sans;
+  @apply bg-white text-black;
 }
 
 body.bsod,

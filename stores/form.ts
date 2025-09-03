@@ -33,8 +33,7 @@ export const useFormStore = defineStore('form', () => {
   const templates = computed<string[]>(() => {
     if (!isFormReady.value) return [];
     return questions.value.map((item) => {
-      if (typeof item.template !== 'function') return '';
-      return item.template(item.value);
+      return item.value;
     }).filter(Boolean);
   });
 
