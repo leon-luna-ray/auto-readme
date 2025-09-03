@@ -27,20 +27,27 @@ input {
 }
 
 /* themes */
-.bsod,
-.bsod input {
+body.basic {
+  @apply bg-white text-black font-sans;
+}
+body.basic input {
+  @apply bg-white text-black font-sans;
+}
+
+body.bsod,
+body.bsod input {
   @apply bg-bsod-blue text-white font-tech;
 }
 
-.hacker,
-.hacker input {
+body.hacker,
+body.hacker input {
   @apply bg-black text-hacker-green font-vt text-[1.5rem];
 }
 
-.hacker h1 {
+body.hacker h1 {
   @apply text-[5rem];
 }
 
-.hacker * {
+body.hacker * {
   @apply text-[1.5rem];
 }
