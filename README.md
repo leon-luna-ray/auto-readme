@@ -109,5 +109,6 @@ If you have any questions about the repo, open an issue or contact me directly a
 
 ## Links
 
-- [https://auto-readme.pages.dev/](https://auto-readme.pages.dev/)
-- [Project Repository](https://github.com/leon-luna-ray/auto-readme/)
+- [View Project](https://auto-readme.pages.dev/)
+- [Code Repository](https://github.com/leon-luna-ray/auto-readme/)
+- [More Info](https://rayluna.dev/projects/auto-readme/)
