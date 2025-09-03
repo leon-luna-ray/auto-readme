@@ -1,9 +1,19 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({});
-
 export default defineEventHandler(async (event) => {
   console.log('Received request for content generation');
+  
+  const config = useRuntimeConfig();
+  const apiKey = config.GEMINI_API_KEY;
+  
+  if (!apiKey) {
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'GEMINI_API_KEY not configured'
+    });
+  }
+  
+  const ai = new GoogleGenAI({ apiKey });
   const body = await readBody(event);
   const prompt = `
   Generate a professional README.md file in Markdown format using the following details:
