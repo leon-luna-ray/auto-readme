@@ -21,6 +21,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import type { Content } from '~/interfaces/Content'
 import { storeToRefs } from 'pinia';
 import { useUiStore } from '~/stores/ui'
 import { useFormStore } from '~/stores/form'
