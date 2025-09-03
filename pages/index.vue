@@ -1,10 +1,10 @@
 <template>
-  <div id="vue-app" :class="['py-[1rem]', ui.theme]">
+  <div id="vue-app" :class="['py-4', ui.theme]">
     <div class="container">
       <main class="main flex-col-2">
         <div class="intro flex-col-2">
           <TerminalText :string="content.intro" :speed="500" />
-          <div v-if="isReady" class="flex gap-x-[1rem]">
+          <div v-if="isReady" class="flex gap-x-4">
             <p><span v-if="!formStore.isFormStarted" class="animate-pulse">{{ ui.indicator }}</span> {{
               content.ready_text }}</p>
             <BooleanSelector @true="formStore.setIsFormStarted" @false="reloadPage" />
@@ -12,7 +12,7 @@
         </div>
         <Form v-if="formStore.isFormStarted" :questions="content.questions" />
 
-        <div v-if="formStore.isFormReady" class="flex gap-x-[1rem]" ref="downloadRef">
+        <div v-if="formStore.isFormReady" class="flex gap-x-4" ref="downloadRef">
           <p><span class="animate-pulse">{{ ui.indicator }}</span> {{ content.download_text }}</p>
           <BooleanSelector @true="formStore.handleSubmit" @false="reloadPage" />
         </div>

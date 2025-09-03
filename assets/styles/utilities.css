@@ -1,25 +1,33 @@
-@tailwind utilities;
+@import 'tailwindcss/utilities' layer(utilities);
 
-@layer utilities {
-  .border-red {
-    @apply border-2 border-red-600;
-  }
-  .border-green {
-    @apply border-2 border-green-600;
-  }
-  .border-blue  {
-    @apply border-2 border-blue-600;
-  }
-  .border-yellow {
-    @apply border-2 border-yellow-600;
-  }
-  .border-purple {
-    @apply border-2 border-purple-600;
-  }
-  .flex-col-1 {
-    @apply flex flex-col gap-y-[1rem];
-  }
-  .flex-col-2 {
-    @apply flex flex-col gap-y-[2rem];
-  }
+@utility border-red {
+  @apply border-2 border-red-600;
+}
+
+@utility border-green {
+  @apply border-2 border-green-600;
+}
+
+@utility border-blue {
+  @apply border-2 border-blue-600;
+}
+
+@utility border-yellow {
+  @apply border-2 border-yellow-600;
+}
+
+@utility border-purple {
+  @apply border-2 border-purple-600;
+}
+
+@utility flex-col-1 {
+  @apply flex flex-col gap-y-4;
+}
+
+@utility flex-col-2 {
+  @apply flex flex-col gap-y-8;
+}
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
 }

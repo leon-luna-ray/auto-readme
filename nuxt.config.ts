@@ -1,4 +1,5 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-09-19",
   nitro: {
@@ -12,9 +13,13 @@ export default defineNuxtConfig({
   css: ['~/assets/styles/main.css'],
   modules: [
     "@pinia/nuxt",
-    "@nuxtjs/tailwindcss"
   ],
   runtimeConfig: {
     GEMINI_API_KEY: process.env.GEMINI_API_KEY,
-  }
+  },
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+  },
 })

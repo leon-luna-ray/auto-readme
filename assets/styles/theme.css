@@ -1,0 +1,90 @@
+
+@theme {
+  --color-hacker-green: #00ff00;
+  --color-bsod-blue: #0000aa;
+
+  --font-anonymous: Anonymous Pro, monospace;
+  --font-tech: Share Tech Mono, monospace;
+  --font-vt: VT323, monospace;
+
+  --animate-none: none;
+  --animate-bounce: bounce 1s infinite;
+  --animate-line: line 5s cubic-bezier(0.07, 0.15, 0.6, 0.75) infinite;
+  --animate-line-reveal: line-reveal 0.5s cubic-bezier(0.07, 0.15, 0.6, 0.75);
+  --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-pulse: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-slide:
+    slide 1s ease-in-out infinite alternate,
+    slide-out 1s ease-in-out 1s infinite alternate;
+  --animate-spin: spin 1s linear infinite;
+  --animate-spin-slow: spin 3s linear infinite;
+  --animate-wiggle: wiggle 4s ease-in-out infinite;
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(-25%);
+      animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+      transform: none;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
+  @keyframes line {
+    0%,
+    75%,
+    100% {
+      top: 31px;
+    }
+    15%,
+    60% {
+      top: 0;
+    }
+  }
+  @keyframes line-reveal {
+    0%,
+    75%,
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    15%,
+    60% {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+  @keyframes ping {
+    75%,
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  @keyframes pulse {
+    50% {
+      opacity: 0.3;
+    }
+  }
+  @keyframes slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+}
